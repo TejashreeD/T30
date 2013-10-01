@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AfterAdminMainActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollAfterAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableAfterAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableAfterAdminRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textViewAdminPage"
+                    android:layout_width="fill_parent"
+                    android:text="Admin Main Page"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FF00FF" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginTeachersEntry"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_shape_change"
+                android:text="Teachers Entry" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginStudentEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bluebtn"
+                android:text="Student Entry" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginStandardEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_shape_change"
+                android:text="Standard Entry" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginDivisionEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bluebtn"
+                android:text="Division Entry" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginSubjectEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_shape_change"
+                android:text="Subject Entry" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginCalender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bluebtn"
+                android:text="Event Calender" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginCreateTimetable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_shape_change"
+                android:text="Time Table" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLoginExamTimetable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bluebtn"
+                android:text="Exam Time Table" />
+
+            <Button
+                android:id="@+id/buttonAReport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_shape_change"
+                android:text="Report" />
+
+            <Button
+                android:id="@+id/buttonAfterAdminLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bluebtn"
+                android:text="Logout" />
+
+            </TableLayout>
+    </ScrollView>
+
+</LinearLayout>

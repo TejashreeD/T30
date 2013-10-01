@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddDivisionActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollDiv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableDiv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableDivRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textDiv"
+                    android:text="Division Details"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#df0000" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableDivRow1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewDivID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Division ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextDivID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableDivRow2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewDivName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextDivName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableDivRow3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewDivCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Capacity"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextCapacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableDivRow3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="3" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayoutButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp" >
+
+                    <Button
+                        android:id="@+id/buttonDivSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/yellobtn"
+                        android:text="Submit" />
+
+                    <Button
+                        android:id="@+id/buttonDivReset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="25dp"
+                        android:background="@drawable/yellobtn"
+                        android:text="Reset" />
+
+                    <Button
+                        android:id="@+id/buttonDivCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@drawable/yellobtn"
+                        android:text="Cancel" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

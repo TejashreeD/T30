@@ -1,0 +1,239 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin"
+    tools:context=".StudentEntryActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollStudent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudentEntry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student Details"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FF00FF" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudPRN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Student PRN"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudPRN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" >
+                </EditText>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudFname"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="First Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudFname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudMname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Middle Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudMname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudLname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Last Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudLname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudBday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Birth Date"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudBday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewStudMail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Email ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextStudEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2"
+                >
+
+                <TextView
+                    android:id="@+id/textViewStudPid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Parent ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Spinner
+                    android:id="@+id/spinnerStudPid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextStudentInfo8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="3" >
+
+                <LinearLayout
+                    android:id="@+id/LinearLayoutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp" >
+
+                    <Button
+                        android:id="@+id/buttonASSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/yellobtn"
+                        android:text="Submit" />
+
+                    <Button
+                        android:id="@+id/buttonASReset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="30dp"
+                        android:background="@drawable/yellobtn"
+                        android:text="Reset" />
+
+                    <Button
+                        android:id="@+id/buttonASCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:background="@drawable/yellobtn"
+                        android:text="Cancel" />
+                </LinearLayout>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

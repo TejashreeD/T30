@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C1FFC1"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AfterTeacherLoginActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollAfterTeacherLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableAfterTeacherLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableAfterTeacherLoginRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textViewTeacher"
+                    android:text="Teacher Main Page"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FF00FF" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/buttonAddSubjectT"
+                style="@style/AppBaseTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/greenbtn"
+                android:text="Add Subject" />
+
+            <Button
+                android:id="@+id/buttonAssignmentT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:text="Assignment" />
+
+            <Button
+                android:id="@+id/buttonAttendenceT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/greenbtn"
+                android:text="Attendence" />
+
+            <Button
+                android:id="@+id/buttonTTimrTableT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:text="Time Table" />
+
+            <Button
+                android:id="@+id/buttonAlarmT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/greenbtn"
+                android:text="Alarm" />
+
+            <Button
+                android:id="@+id/buttonExamT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:text="Exam" />
+
+            <Button
+                android:id="@+id/buttonReportT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/greenbtn"
+                android:text="Report" />
+
+            <Button
+                android:id="@+id/buttonLogoutT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:text="Logout" />
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AfterPArentLoginMainActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollAfterParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableAfterParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableAfterParentRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textViewParent"
+                    android:text="Parent Main Page"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FF00FF" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/buttonAPShowAcademics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:padding="15dp"
+                android:text="Show Academics Progress" />
+
+            <Button
+                android:id="@+id/buttonAPShowExtProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:padding="15dp"
+                android:text="Show Extracarricular Progress" />
+
+            <Button
+                android:id="@+id/buttonAPLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yellobtn"
+                android:padding="15dp"
+                android:text="Logout" />
+        </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

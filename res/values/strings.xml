@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">T</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_school_entry">SchoolEntryActivity</string>
+    <string name="title_activity_after_admin_main">AfterAdminMainActivity</string>
+    <string name="title_activity_teachers_entry">TeachersEntryActivity</string>
+    <string name="title_activity_student_entry">StudentEntryActivity</string>
+    <string name="title_activity_add_division">AddDivisionActivity</string>
+    <string name="title_activity_add_class">AddClassActivity</string>
+    <string name="title_activity_add_subject">AddSubjectActivity</string>
+    <string name="title_activity_allocate_subject">AllocateSubjectActivity</string>
+    <string name="title_activity_after_teacher_login">AfterTeacherLoginActivity</string>
+    <string name="title_activity_attendence">AttendenceActivity</string>
+    <string name="title_activity_atassignment">ATAssignmentActivity</string>
+    <string name="title_activity_atalarm">ATAlarmActivity</string>
+    <string name="title_activity_exam">ExamActivity</string>
+    <string name="title_activity_acalender">ACalenderActivity</string>
+    <string name="title_activity_time_table">TimeTableActivity</string>
+    <string name="title_activity_report">ReportActivity</string>
+    <string name="title_activity_after_parent_login_main">AfterPArentLoginMainActivity</string>
+    <string name="title_activity_new_login">NewLoginActivity</string>
+    <string name="title_activity_class_div">ClassDivActivity</string>
+    <string name="title_activity_show_tt">ShowTTActivity</string>
+    <string name="title_activity_after_super_admin_login">AfterSuperAdminLoginActivity</string>
+    <string name="title_activity_demo">Demo</string>
+    <string name="title_activity_exam_sheet">ExamSheetActivity</string>
+    <string name="title_activity_allocate__subject_">Allocate_Subject_Activity</string>
+    <string name="title_activity_allocate_sub">AllocateSubActivity</string>
+
+</resources>

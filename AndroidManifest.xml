@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tcd.com.t"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="tcd.com.t.LoginMainActivity"
+            android:label="@string/app_name"
+            android:permission="android.permission.INTERNET" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+                                    
+            
+                          
+        </activity>
+        <activity
+            android:name="tcd.com.t.SchoolEntryActivity"
+            android:label="@string/title_activity_school_entry" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AfterAdminMainActivity"
+            android:label="@string/title_activity_after_admin_main" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.TeachersEntryActivity"
+            android:label="@string/title_activity_teachers_entry" >
+               
+                        
+        </activity>
+        <activity
+            android:name="tcd.com.t.StudentEntryActivity"
+            android:label="@string/title_activity_student_entry" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AddDivisionActivity"
+            android:label="@string/title_activity_add_division" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AddClassActivity"
+            android:label="@string/title_activity_add_class" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AddSubjectActivity"
+            android:label="@string/title_activity_add_subject" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.Allocate_Subject_Activity"
+            android:label="@string/title_activity_allocate_subject" >
+                    </activity>
+        <activity
+            android:name="tcd.com.t.AfterTeacherLoginActivity"
+            android:label="@string/title_activity_after_teacher_login" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AttendenceActivity"
+            android:label="@string/title_activity_attendence" >
+                                   
+        </activity>
+        <activity
+            android:name="tcd.com.t.ATAssignmentActivity"
+            android:label="@string/title_activity_atassignment" >
+                                     
+        </activity>
+        <activity
+            android:name="tcd.com.t.ATAlarmActivity"
+            android:label="@string/title_activity_atalarm" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ExamActivity"
+            android:label="@string/title_activity_exam" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ACalenderActivity"
+            android:label="@string/title_activity_acalender" >
+                        
+                     
+            
+        </activity>
+        <activity
+            android:name="tcd.com.t.TimeTableActivity"
+            android:label="@string/title_activity_time_table" >
+                      
+        </activity>
+        <activity
+            android:name="tcd.com.t.ReportActivity"
+            android:label="@string/title_activity_report" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AfterPArentLoginMainActivity"
+            android:label="@string/title_activity_after_parent_login_main" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.NewLoginActivity"
+            android:label="@string/title_activity_new_login" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ClassDivActivity"
+            android:label="@string/title_activity_class_div" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ShowTTActivity"
+            android:label="@string/title_activity_show_tt" >
+                        
+                         
+        </activity>
+        <activity
+            android:name="tcd.com.t.AfterSuperAdminLoginActivity"
+            android:label="@string/title_activity_after_super_admin_login" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.Demo"
+            android:label="@string/title_activity_demo" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ExamSheetActivity"
+            android:label="@string/title_activity_exam_sheet" >
+                       
+                    </activity>
+        <activity
+            android:name="tcd.com.t.AllocateSubActivity"
+            android:label="@string/title_activity_allocate_sub" >
+                        
+        </activity>
+    </application>
+
+</manifest>
