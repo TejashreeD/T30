@@ -95,9 +95,7 @@ buttonExamSubmit.setOnClickListener(new OnClickListener() {
 				
 		// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
+                             
                 
                 public void run() {
                     // TODO Run network requests here.
@@ -113,7 +111,7 @@ buttonExamSubmit.setOnClickListener(new OnClickListener() {
                     // HttpPost post = new
                     // HttpPost("http://samidha.org/restTrials/login/");
                     HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
+                            "http://115.111.105.152/schoolApp/examttEntry");
                     post.setHeader("content-type",
                             "application/json; charset=UTF-8");
 
