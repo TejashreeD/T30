@@ -21,11 +21,7 @@
             android:permission="android.permission.INTERNET" >
                          
                                     
-             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             
             
                           
         </activity>
@@ -117,7 +113,11 @@
         <activity
             android:name="tcd.com.t.ShowTTActivity"
             android:label="@string/title_activity_show_tt" >
-                       
+                       <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
                         
                          
         </activity>

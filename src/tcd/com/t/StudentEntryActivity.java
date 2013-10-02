@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +25,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class StudentEntryActivity extends Activity {
@@ -37,10 +35,14 @@ public class StudentEntryActivity extends Activity {
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-
+	EditText studPrn;
+	EditText fName;
 	EditText SDOB;
 	Calendar myCalendar;
+	protected EditText mName;
+	protected EditText lName;
+	protected EditText email;
+	protected EditText bDate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +51,14 @@ public class StudentEntryActivity extends Activity {
 		Button buttonCancel=(Button) findViewById(R.id.buttonASCancel);
 		Button buttonReset=(Button) findViewById(R.id.buttonASReset);
 		Button buttonSSubmit=(Button) findViewById(R.id.buttonASSubmit);
-		SDOB = (EditText) findViewById(R.id.editTextStudBday);
-	
+		
+		studPrn=(EditText) findViewById(R.id.editTextStudPRN);
+		fName=(EditText) findViewById(R.id.editTextStudFname);
+		mName=(EditText) findViewById(R.id.editTextStudMname);
+		lName=(EditText) findViewById(R.id.editTextStudLname);
+		email=(EditText) findViewById(R.id.editTextStudEmail);
+		bDate=(EditText) findViewById(R.id.editTextStudBday);
+		
 		buttonCancel.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -64,12 +72,7 @@ public class StudentEntryActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				EditText studPrn=(EditText) findViewById(R.id.editTextStudPRN);
-				EditText fName=(EditText) findViewById(R.id.editTextStudFname);
-				EditText mName=(EditText) findViewById(R.id.editTextStudMname);
-				EditText lName=(EditText) findViewById(R.id.editTextStudLname);
-				EditText email=(EditText) findViewById(R.id.editTextStudEmail);
-				EditText bDate=(EditText) findViewById(R.id.editTextStudBday);
+				
 				studPrn.setText("");
 				bDate.setText("");
 				fName.setText("");
@@ -84,31 +87,28 @@ public class StudentEntryActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				System.out.println("onClick!!!");
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+				
 
 				
 		// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
-                
                 public void run() {
                     // TODO Run network requests here.
-                    EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-                    EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
-                    System.out
-                            .println("*********txtId.getText().toString()::"
-                                    + txtId.getText().toString()
-                                    + txtWord.getText().toString());
+                   
+                    System.out.println("*********txtId.getText().toString()::"
+                    		+studPrn.getText().toString()+
+            				bDate.getText().toString()+
+            				fName.getText().toString()+
+            				mName.getText().toString()+
+            				lName.getText().toString()+
+            				email.getText().toString()
+                                    );
 
                     HttpClient httpClient = new DefaultHttpClient();
                     // HttpPost post = new
                     // HttpPost("http://samidha.org/restTrials/login/");
                     HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
+                            "http://115.111.105.152/schoolApp/studentEntry");
                     post.setHeader("content-type",
                             "application/json; charset=UTF-8");
 
@@ -117,14 +117,15 @@ public class StudentEntryActivity extends Activity {
 
                     try {
 
-                        // Toast.makeText(getBaseContext(), "trying!!!",
-                        // Toast.LENGTH_SHORT).show();
-
-                        dato.put("email", txtId.getText().toString());
-                        dato.put("pwd", txtWord.getText().toString());
-                        // dato.put("type",
-                        // txtDescription.getText().toString());
-
+                     
+                        dato.put("PRN", studPrn.getText().toString());
+                        dato.put("firstName", fName.getText().toString());
+                        dato.put("middleName", mName.getText().toString());
+                        dato.put("lastName", lName.getText().toString());
+                        dato.put("DOB", bDate.getText().toString());
+                        dato.put("emailId", email.getText().toString());
+                       // dato.put("pid", email.getText().toString()); its important spinner related
+                        
                         System.out.println("OKAY_0!!");
 
                         StringEntity entity = new StringEntity(dato
@@ -225,7 +226,7 @@ System.out.println("OKAY_settext_outer");
 		myCalendar = Calendar.getInstance();
 
 	
-		SDOB.setOnClickListener(new OnClickListener() {
+		bDate.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -259,7 +260,7 @@ System.out.println("OKAY_settext_outer");
 			String myFormat = "MM/dd/yy"; // In which you need put here
 			SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-			SDOB.setText(sdf.format(myCalendar.getTime()));
+			bDate.setText(sdf.format(myCalendar.getTime()));
 
 			
 		}

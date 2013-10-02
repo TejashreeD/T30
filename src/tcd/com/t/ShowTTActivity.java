@@ -1,24 +1,16 @@
 package tcd.com.t;
 
-import java.sql.Date;
 import java.util.Calendar;
 
-import javax.security.auth.PrivateCredentialPermission;
-
 import android.os.Bundle;
-import android.animation.TimeAnimator.TimeListener;
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
-import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
@@ -28,16 +20,17 @@ public class ShowTTActivity extends Activity {
 	Calendar calendar = Calendar.getInstance();
 	int hr = calendar.get(calendar.HOUR_OF_DAY);
 	int mnt = calendar.get(calendar.MINUTE);
-	EditText txtTtStartTime;
+	EditText txtStartTime;
+	EditText txtEndTime;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_tt);
 		Button btnBack = (Button) findViewById(R.id.buttonTTBack);
-		txtTtStartTime = (EditText) findViewById(R.id.editTextTTStartTime);
-		EditText txtTtEt = (EditText) findViewById(R.id.editTextTTEndTime);
-		
+		txtStartTime = (EditText) findViewById(R.id.editTextTTStartTime);
+		txtEndTime = (EditText) findViewById(R.id.editTextTTEndTime);
+
 		final EditText ctime = (EditText) findViewById(R.id.editTextTTCurrentTime);
 		updateTime(hr, mnt);
 
@@ -46,22 +39,7 @@ public class ShowTTActivity extends Activity {
 		time.setToNow();
 		// System.out.println("Time:"+time.hour+time.minute);
 		ctime.setText(time.format("%H:%M"));
-		/*ctime.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				Time time = new Time(Time.getCurrentTimezone());
-
-				time.setToNow();
-				// System.out.println("Time:"+time.hour+time.minute);
-				ctime.setText(time.format("%H:%M"));
-
-			}
-		});*/
-		// Date d=new Date(0);
-		// CharSequence s = DateFormat.format("EEEE, MMMM d, yyyy ",
-		// d.getTime());
 		btnBack.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -72,13 +50,22 @@ public class ShowTTActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		txtTtStartTime.setOnClickListener(new OnClickListener() {
+		txtStartTime.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				new TimePickerDialog(ShowTTActivity.this, timeSetListener, hr,
 						mnt, false).show();
 
+			}
+		});
+		txtEndTime.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				new TimePickerDialog(ShowTTActivity.this, timeSetListener2, hr,
+						mnt, false).show();
 			}
 		});
 
@@ -92,6 +79,17 @@ public class ShowTTActivity extends Activity {
 			hr = hour2;
 			mnt = mnt2;
 			updateTime(hr, mnt);
+		}
+	};
+
+	TimePickerDialog.OnTimeSetListener timeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
+
+		@Override
+		public void onTimeSet(TimePicker view, int hour2, int mnt2) {
+			// TODO Auto-generated method stub
+			hr = hour2;
+			mnt = mnt2;
+			updateTime2(hr, mnt);
 		}
 	};
 
@@ -117,16 +115,38 @@ public class ShowTTActivity extends Activity {
 		else
 			timeSet = "AM";
 
-		String minSet = "";
 		if (mnt < 10) {
-			minSet = "0" + mnt;
 
 		} else {
-			minSet = String.valueOf(mnt);
 		}
 		String setTime = new StringBuilder().append(hr).append(':').append(mnt)
 				.append(" ").append(timeSet).toString();
-		txtTtStartTime.setText(setTime);
+		txtStartTime.setText(setTime);
+
+	}
+
+	protected void updateTime2(int hr, int mnt) {
+		// TODO Auto-generated method stub
+		String timeSet;
+		if (hr > 12) {
+			hr -= 12;
+			timeSet = "PM";
+
+		} else if (hr == 0) {
+			hr += 12;
+			timeSet = "AM";
+		} else if (hr == 12)
+			timeSet = "PM";
+		else
+			timeSet = "AM";
+
+		if (mnt < 10) {
+
+		} else {
+		}
+		String setTime = new StringBuilder().append(hr).append(':').append(mnt)
+				.append(" ").append(timeSet).toString();
+		txtEndTime.setText(setTime);
 
 	}
 
