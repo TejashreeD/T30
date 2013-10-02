@@ -104,10 +104,19 @@ public class TeachersEntryActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(TeachersEntryActivity.this,
-						AfterSuperAdminLoginActivity.class);
-				startActivity(intent);
+				Intent intent=new Intent(TeachersEntryActivity.this,AfterAdminMainActivity.class).putExtra("from", "AfterAdminMainActivity");
+				if(getIntent().getStringExtra("from").equals("AfterAdminMainActivity"))
+				{Intent intent1 = new Intent(TeachersEntryActivity.this,
+						AfterAdminMainActivity.class);
+				startActivity(intent1);
 
+				}
+				else {
+					Intent intent2 = new Intent(TeachersEntryActivity.this,
+							AfterSuperAdminLoginActivity.class);
+					startActivity(intent2);
+				}
+				
 			}
 		});
 		buttonPSubmit.setOnClickListener(new OnClickListener() {

@@ -71,19 +71,19 @@ public class AddClassActivity extends Activity {
                 
                 public void run() {
                     // TODO Run network requests here.
-                    EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-                    EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+                    EditText txtClsId = (EditText) findViewById(R.id.editTextClsID);
+                    EditText txtClsName= (EditText) findViewById(R.id.editTextClsName);
+                  //  resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
                     System.out
                             .println("*********txtId.getText().toString()::"
-                                    + txtId.getText().toString()
-                                    + txtWord.getText().toString());
+                                    + txtClsId.getText().toString()
+                                    + txtClsName.getText().toString());
 
                     HttpClient httpClient = new DefaultHttpClient();
                     // HttpPost post = new
                     // HttpPost("http://samidha.org/restTrials/login/");
                     HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
+                            "http://115.111.105.152/schoolApp/classEntry");
                     post.setHeader("content-type",
                             "application/json; charset=UTF-8");
 
@@ -95,8 +95,8 @@ public class AddClassActivity extends Activity {
                         // Toast.makeText(getBaseContext(), "trying!!!",
                         // Toast.LENGTH_SHORT).show();
 
-                        dato.put("email", txtId.getText().toString());
-                        dato.put("pwd", txtWord.getText().toString());
+                        dato.put("classId", txtClsId.getText().toString());
+                        dato.put("className", txtClsName.getText().toString());
                         // dato.put("type",
                         // txtDescription.getText().toString());
 
@@ -117,39 +117,38 @@ public class AddClassActivity extends Activity {
                         // Toast.makeText(getBaseContext(),
                         // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
                     } catch (Exception exception) {
-                        Log.e("MYAPP", "exception", exception);
+                       // Log.e("MYAPP", "exception", exception);
+                        exception.printStackTrace();
+                        
                     }
+                    
                     /* just try */
 
                     JSONObject jsonResponse;
-
+/*
                     try {
                         System.out.println("OKAY_6!!");
-                        /******
-                         * Creates a new JSONObject with name/value mappings
-                         * from the JSON string.
-                         ********/
+                        //******* Creates a new JSONObject with name/value mappings from the JSON string.
+                        
                         jsonResponse = new JSONObject(respStr);
                         System.out.println("OKAY_7!!");
-                        /*****
-                         * Returns the value mapped by name if it exists and
-                         * is a JSONArray.
-                         ***/
-                        /******* Returns null otherwise. *******/
+                        //* Returns the value mapped by name if it exists and is a JSONArray.
+                         
+                        //******* Returns null otherwise. *******
                         JSONArray jsonMainNode = jsonResponse
                                 .optJSONArray("ResultSet");
                         System.out.println("OKAY_8!!");
-                        /*********** Process each JSON Node ***********/
+                        //*********** Process each JSON Node ***********
 
                         int lengthJsonArr = jsonMainNode.length();
 
                         for (int i = 0; i < lengthJsonArr; i++) {
                             System.out.println("OKAY_9!!");
-                            /****** Get Object for each JSON node. ***********/
+                            //****** Get Object for each JSON node. ***********
                             JSONObject jsonChildNode = jsonMainNode
                                     .getJSONObject(i);
 
-                            /******* Fetch node values **********/
+                            //******* Fetch node values **********
                             String email = jsonChildNode.optString(
                                     "emailId").toString();
                             String pwd = jsonChildNode.optString("pwd")
@@ -167,7 +166,7 @@ public class AddClassActivity extends Activity {
                             // Log.i("JSON parse", song_name);
                         }
 
-                        /************ Show Output on screen/activity **********/
+                        //************ Show Output on screen/activity **********
                         System.out.println("OKAY_11!!" + OutputData);
 
                         // startActivity(intent1);
@@ -175,10 +174,10 @@ public class AddClassActivity extends Activity {
 
                         e.printStackTrace();
                     }
-
+*/
                     /* just try end */
 
-                    System.out.println("OKAY_settext_inner" + OutputData);
+                    //System.out.println("OKAY_settext_inner" + OutputData);
 
                 }
 
@@ -187,11 +186,12 @@ System.out.println("OKAY_settext_outer");
 
             // show the data in toast
             
-			Toast.makeText(getApplicationContext(),
+			/*Toast.makeText(getApplicationContext(),
                     "Selected: " + OutputData, Toast.LENGTH_LONG).show();
 //resultSetOutput.setText(OutputData);
 
-				Toast.makeText( getApplicationContext(), "Submited Class Detail Successfully ",Toast.LENGTH_LONG).show();
+				*/
+Toast.makeText( getApplicationContext(), "Submited Class Detail Successfully ",Toast.LENGTH_LONG).show();
 				
 			}
 		});

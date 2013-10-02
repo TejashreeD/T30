@@ -254,10 +254,12 @@ public class LoginMainActivity extends Activity implements
                                     + txtWord.getText().toString());
 
                     HttpClient httpClient = new DefaultHttpClient();
-                    // HttpPost post = new
-                    // HttpPost("http://samidha.org/restTrials/login/");
-                    HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
+                     //HttpPost post = new
+                    //HttpPost("http://samidha.org/restTrials/login");
+                    
+                   HttpPost post = new HttpPost(
+                           "http://115.111.105.152/schoolApp/login");
+                   
                     post.setHeader("content-type",
                             "application/json; charset=UTF-8");
 
