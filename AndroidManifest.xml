@@ -19,11 +19,6 @@
             android:name="tcd.com.t.LoginMainActivity"
             android:label="@string/app_name"
             android:permission="android.permission.INTERNET" >
-                         
-                                    
-             
-            
-                          
         </activity>
         <activity
             android:name="tcd.com.t.SchoolEntryActivity"
@@ -36,8 +31,6 @@
         <activity
             android:name="tcd.com.t.TeachersEntryActivity"
             android:label="@string/title_activity_teachers_entry" >
-               
-                        
         </activity>
         <activity
             android:name="tcd.com.t.StudentEntryActivity"
@@ -50,7 +43,6 @@
         <activity
             android:name="tcd.com.t.AddClassActivity"
             android:label="@string/title_activity_add_class" >
-                        
         </activity>
         <activity
             android:name="tcd.com.t.AddSubjectActivity"
@@ -59,7 +51,7 @@
         <activity
             android:name="tcd.com.t.Allocate_Subject_Activity"
             android:label="@string/title_activity_allocate_subject" >
-                    </activity>
+        </activity>
         <activity
             android:name="tcd.com.t.AfterTeacherLoginActivity"
             android:label="@string/title_activity_after_teacher_login" >
@@ -67,12 +59,10 @@
         <activity
             android:name="tcd.com.t.AttendenceActivity"
             android:label="@string/title_activity_attendence" >
-                                   
         </activity>
         <activity
             android:name="tcd.com.t.ATAssignmentActivity"
             android:label="@string/title_activity_atassignment" >
-                                     
         </activity>
         <activity
             android:name="tcd.com.t.ATAlarmActivity"
@@ -85,14 +75,10 @@
         <activity
             android:name="tcd.com.t.ACalenderActivity"
             android:label="@string/title_activity_acalender" >
-                        
-                     
-            
         </activity>
         <activity
             android:name="tcd.com.t.TimeTableActivity"
             android:label="@string/title_activity_time_table" >
-                      
         </activity>
         <activity
             android:name="tcd.com.t.ReportActivity"
@@ -113,13 +99,6 @@
         <activity
             android:name="tcd.com.t.ShowTTActivity"
             android:label="@string/title_activity_show_tt" >
-                       <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-                        
-                         
         </activity>
         <activity
             android:name="tcd.com.t.AfterSuperAdminLoginActivity"
@@ -132,12 +111,19 @@
         <activity
             android:name="tcd.com.t.ExamSheetActivity"
             android:label="@string/title_activity_exam_sheet" >
-                       
-                    </activity>
+        </activity>
         <activity
             android:name="tcd.com.t.AllocateSubActivity"
             android:label="@string/title_activity_allocate_sub" >
-                        
+        </activity>
+        <activity
+            android:name="tcd.com.t.SpinnerJson"
+            android:label="@string/title_activity_spinner_json" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

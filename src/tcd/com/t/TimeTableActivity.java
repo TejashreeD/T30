@@ -13,20 +13,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -34,7 +29,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TimeTableActivity extends Activity implements
@@ -46,8 +40,6 @@ public class TimeTableActivity extends Activity implements
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-
 	EditText ExamDate;
 	Calendar myCalendar;
 
@@ -103,18 +95,15 @@ public class TimeTableActivity extends Activity implements
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				System.out.println("onClick!!!");
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-
+				
 				// Spinner element
 				new Thread() {
-					private Context Context;
-
 					public void run() {
 						// TODO Run network requests here.
 						EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
 						EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-						resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+
+
 						System.out
 								.println("*********txtId.getText().toString()::"
 										+ txtId.getText().toString()
@@ -162,62 +151,7 @@ public class TimeTableActivity extends Activity implements
 						}
 						/* just try */
 
-						JSONObject jsonResponse;
-
-						try {
-							System.out.println("OKAY_6!!");
-							/******
-							 * Creates a new JSONObject with name/value mappings
-							 * from the JSON string.
-							 ********/
-							jsonResponse = new JSONObject(respStr);
-							System.out.println("OKAY_7!!");
-							/*****
-							 * Returns the value mapped by name if it exists and
-							 * is a JSONArray.
-							 ***/
-							/******* Returns null otherwise. *******/
-							JSONArray jsonMainNode = jsonResponse
-									.optJSONArray("ResultSet");
-							System.out.println("OKAY_8!!");
-							/*********** Process each JSON Node ***********/
-
-							int lengthJsonArr = jsonMainNode.length();
-
-							for (int i = 0; i < lengthJsonArr; i++) {
-								System.out.println("OKAY_9!!");
-								/****** Get Object for each JSON node. ***********/
-								JSONObject jsonChildNode = jsonMainNode
-										.getJSONObject(i);
-
-								/******* Fetch node values **********/
-								String email = jsonChildNode.optString(
-										"emailId").toString();
-								String pwd = jsonChildNode.optString("pwd")
-										.toString();
-
-								String firstname = jsonChildNode.optString(
-										"firstName").toString();
-								String lastname = jsonChildNode.optString(
-										"lastName").toString();
-
-								System.out.println("OKAY_10!!");
-								OutputData += "Node : \n\n     " + email
-										+ " | " + pwd + " | " + firstname
-										+ " | " + lastname + " \n\n ";
-								// Log.i("JSON parse", song_name);
-							}
-
-							/************ Show Output on screen/activity **********/
-							System.out.println("OKAY_11!!" + OutputData);
-
-							// startActivity(intent1);
-						} catch (JSONException e) {
-
-							e.printStackTrace();
-						}
-
-						/* just try end */
+						
 
 						System.out.println("OKAY_settext_inner" + OutputData);
 
@@ -270,8 +204,7 @@ public class TimeTableActivity extends Activity implements
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
-		// On selecting a spinner item
-		String item = parent.getItemAtPosition(pos).toString();
+		parent.getItemAtPosition(pos).toString();
 
 	}
 

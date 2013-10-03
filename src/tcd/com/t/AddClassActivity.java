@@ -1,44 +1,31 @@
 package tcd.com.t;
 
 import java.io.InputStream;
-import java.util.Map;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddClassActivity extends Activity {
 	HttpResponse resp;
 	Intent intent1;
-	private String OutputData;
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-
-
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,20 +42,12 @@ public class AddClassActivity extends Activity {
 				// Toast.makeText(getBaseContext(), "onClick!!!",
 				// Toast.LENGTH_SHORT).show();
 
-			//	StrictMode.ThreadPolicy policy = new
-			//	StrictMode.ThreadPolicy.Builder().permitAll().build();
-				// StrictMode.setThreadPolicy(policy);
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+			findViewById(R.id.editTextLUsername);
+				findViewById(R.id.editTextLPwd);
 
 				
 		// Spinner element
 				new Thread() {
-                private Context Context;
-				
-				
-                
-                
                 public void run() {
                     // TODO Run network requests here.
                     EditText txtClsId = (EditText) findViewById(R.id.editTextClsID);
@@ -123,62 +102,7 @@ public class AddClassActivity extends Activity {
                     }
                     
                     /* just try */
-
-                    JSONObject jsonResponse;
-/*
-                    try {
-                        System.out.println("OKAY_6!!");
-                        //******* Creates a new JSONObject with name/value mappings from the JSON string.
-                        
-                        jsonResponse = new JSONObject(respStr);
-                        System.out.println("OKAY_7!!");
-                        //* Returns the value mapped by name if it exists and is a JSONArray.
-                         
-                        //******* Returns null otherwise. *******
-                        JSONArray jsonMainNode = jsonResponse
-                                .optJSONArray("ResultSet");
-                        System.out.println("OKAY_8!!");
-                        //*********** Process each JSON Node ***********
-
-                        int lengthJsonArr = jsonMainNode.length();
-
-                        for (int i = 0; i < lengthJsonArr; i++) {
-                            System.out.println("OKAY_9!!");
-                            //****** Get Object for each JSON node. ***********
-                            JSONObject jsonChildNode = jsonMainNode
-                                    .getJSONObject(i);
-
-                            //******* Fetch node values **********
-                            String email = jsonChildNode.optString(
-                                    "emailId").toString();
-                            String pwd = jsonChildNode.optString("pwd")
-                                    .toString();
-
-                            String firstname = jsonChildNode.optString(
-                                    "firstName").toString();
-                            String lastname = jsonChildNode.optString(
-                                    "lastName").toString();
-
-                            System.out.println("OKAY_10!!");
-                            OutputData += "Node : \n\n     " + email
-                                    + " | " + pwd + " | " + firstname
-                                    + " | " + lastname + " \n\n ";
-                            // Log.i("JSON parse", song_name);
-                        }
-
-                        //************ Show Output on screen/activity **********
-                        System.out.println("OKAY_11!!" + OutputData);
-
-                        // startActivity(intent1);
-                    } catch (JSONException e) {
-
-                        e.printStackTrace();
-                    }
-*/
-                    /* just try end */
-
-                    //System.out.println("OKAY_settext_inner" + OutputData);
-
+                                       
                 }
 
             }.start();

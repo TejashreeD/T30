@@ -18,8 +18,10 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
+import android.app.TimePickerDialog;
+import android.app.TimePickerDialog.OnTimeSetListener;
 import android.content.Intent;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -27,10 +29,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class ACalenderActivity extends Activity {
+	final static int TIME = 1111;
+	Calendar calendar = Calendar.getInstance();
+	int hr = calendar.get(Calendar.HOUR_OF_DAY);
+	int mnt = calendar.get(Calendar.MINUTE);
+	EditText txtEventTime;
+
 	HttpResponse resp;
 	Intent intent1;
 	private String OutputData;
@@ -38,7 +46,6 @@ public class ACalenderActivity extends Activity {
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
 	EditText CDOB;
 	Calendar myCalendar;
 
@@ -50,6 +57,26 @@ public class ACalenderActivity extends Activity {
 		Button buttonCUpdate=(Button) findViewById(R.id.buttonUpdate);
 		Button buttonCReset=(Button) findViewById(R.id.buttonCalenderReset);
 		Button buttonCCancel=(Button) findViewById(R.id.buttonCalenderCancel);
+		 txtEventTime=(EditText) findViewById(R.id.editTextETime);
+		
+		Time time = new Time(Time.getCurrentTimezone());
+
+		time.setToNow();
+		
+	txtEventTime.setText(time.format("%H:%M"));
+
+		txtEventTime.setOnClickListener(new OnClickListener() {
+			
+			private OnTimeSetListener timeSetListener;
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				new TimePickerDialog(ACalenderActivity.this, timeSetListener, hr,
+						mnt, false).show();
+
+			}
+		});
 		myCalendar = Calendar.getInstance();
 		CDOB = (EditText) findViewById(R.id.editTextCDate);
 CDOB.setOnClickListener(new OnClickListener() {
@@ -86,140 +113,78 @@ CDOB.setOnClickListener(new OnClickListener() {
 				
 				// TODO Auto-generated method stub
 				System.out.println("onClick!!!");
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-
-				
+					
+				final EditText txtEventId=(EditText) findViewById(R.id.editTextAEventID);
+				final EditText txtEventName=(EditText) findViewById(R.id.editTextAEventName);
+				final EditText txtEventDate=(EditText) findViewById(R.id.editTextCDate);
+				final EditText txtEventTime=(EditText) findViewById(R.id.editTextETime);
+			
 		// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
-                
-                public void run() {
-                    // TODO Run network requests here.
-                    EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-                    EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
-                    System.out
-                            .println("*********txtId.getText().toString()::"
-                                    + txtId.getText().toString()
-                                    + txtWord.getText().toString());
+	                public void run() {
+	                    // TODO Run network requests here.
+	                                //  resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+	                    System.out
+	                            .println("*********txtId.getText().toString()::"
+	                                    + txtEventId.getText().toString()
+	                                    + txtEventName.getText().toString()
+	                                    + txtEventDate.getText().toString()
+	                                    + txtEventTime.getText().toString());
 
-                    HttpClient httpClient = new DefaultHttpClient();
-                    // HttpPost post = new
-                    // HttpPost("http://samidha.org/restTrials/login/");
-                    HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
-                    post.setHeader("content-type",
-                            "application/json; charset=UTF-8");
+	                    HttpClient httpClient = new DefaultHttpClient();
+	                    // HttpPost post = new
+	                    // HttpPost("http://samidha.org/restTrials/login/");
+	                    HttpPost post = new HttpPost(
+	                            "http://115.111.105.152/schoolApp/calenderEntry");
+	                    post.setHeader("content-type",
+	                            "application/json; charset=UTF-8");
 
-                    // Construimos el objeto cliente en formato JSON
-                    JSONObject dato = new JSONObject();
+	                    // Construimos el objeto cliente en formato JSON
+	                    JSONObject dato = new JSONObject();
 
-                    try {
+	                    try {
 
-                        // Toast.makeText(getBaseContext(), "trying!!!",
-                        // Toast.LENGTH_SHORT).show();
+	                        // Toast.makeText(getBaseContext(), "trying!!!",
+	                        // Toast.LENGTH_SHORT).show();
 
-                        dato.put("email", txtId.getText().toString());
-                        dato.put("pwd", txtWord.getText().toString());
-                        // dato.put("type",
-                        // txtDescription.getText().toString());
+	                        dato.put("EventId", txtEventId.getText().toString());
+	                        dato.put("Ename", txtEventName.getText().toString());
+	                        dato.put("Date", txtEventDate.getText().toString());
+	                        dato.put("Time", txtEventTime.getText().toString());
+	                         System.out.println("OKAY_0!!");
 
-                        System.out.println("OKAY_0!!");
+	                        StringEntity entity = new StringEntity(dato
+	                                .toString());
+	                        System.out.println("OKAY_1!!");
+	                        post.setEntity(entity);
+	                        System.out.println("OKAY_2!!");
 
-                        StringEntity entity = new StringEntity(dato
-                                .toString());
-                        System.out.println("OKAY_1!!");
-                        post.setEntity(entity);
-                        System.out.println("OKAY_2!!");
+	                        HttpResponse resp = httpClient.execute(post);
+	                        System.out.println("OKAY_3!!");
+	                        respStr = EntityUtils.toString(resp.getEntity());
+	                        System.out.println("OKAY_4!!");
 
-                        HttpResponse resp = httpClient.execute(post);
-                        System.out.println("OKAY_3!!");
-                        respStr = EntityUtils.toString(resp.getEntity());
-                        System.out.println("OKAY_4!!");
+	                        System.out.println("OKAY_5!!" + respStr);
+	                        // Toast.makeText(getBaseContext(),
+	                        // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
+	                    } catch (Exception exception) {
+	                       // Log.e("MYAPP", "exception", exception);
+	                        exception.printStackTrace();
+	                        
+	                    }
+	                    
+	                    /* just try */
+	                                       
+	                }
 
-                        System.out.println("OKAY_5!!" + respStr);
-                        // Toast.makeText(getBaseContext(),
-                        // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
-                    } catch (Exception exception) {
-                        Log.e("MYAPP", "exception", exception);
-                    }
-                    /* just try */
-
-                    JSONObject jsonResponse;
-
-                    try {
-                        System.out.println("OKAY_6!!");
-                        /******
-                         * Creates a new JSONObject with name/value mappings
-                         * from the JSON string.
-                         ********/
-                        jsonResponse = new JSONObject(respStr);
-                        System.out.println("OKAY_7!!");
-                        /*****
-                         * Returns the value mapped by name if it exists and
-                         * is a JSONArray.
-                         ***/
-                        /******* Returns null otherwise. *******/
-                        JSONArray jsonMainNode = jsonResponse
-                                .optJSONArray("ResultSet");
-                        System.out.println("OKAY_8!!");
-                        /*********** Process each JSON Node ***********/
-
-                        int lengthJsonArr = jsonMainNode.length();
-
-                        for (int i = 0; i < lengthJsonArr; i++) {
-                            System.out.println("OKAY_9!!");
-                            /****** Get Object for each JSON node. ***********/
-                            JSONObject jsonChildNode = jsonMainNode
-                                    .getJSONObject(i);
-
-                            /******* Fetch node values **********/
-                            String email = jsonChildNode.optString(
-                                    "emailId").toString();
-                            String pwd = jsonChildNode.optString("pwd")
-                                    .toString();
-
-                            String firstname = jsonChildNode.optString(
-                                    "firstName").toString();
-                            String lastname = jsonChildNode.optString(
-                                    "lastName").toString();
-
-                            System.out.println("OKAY_10!!");
-                            OutputData += "Node : \n\n     " + email
-                                    + " | " + pwd + " | " + firstname
-                                    + " | " + lastname + " \n\n ";
-                            // Log.i("JSON parse", song_name);
-                        }
-
-                        /************ Show Output on screen/activity **********/
-                        System.out.println("OKAY_11!!" + OutputData);
-
-                        // startActivity(intent1);
-                    } catch (JSONException e) {
-
-                        e.printStackTrace();
-                    }
-
-                    /* just try end */
-
-                    System.out.println("OKAY_settext_inner" + OutputData);
-
-                }
-
-            }.start();
-System.out.println("OKAY_settext_outer");
-
+	            }.start();
+	System.out.println("OKAY_settext_outer");
             // show the data in toast
             
-			Toast.makeText(getApplicationContext(),
-                    "Selected: " + OutputData, Toast.LENGTH_LONG).show();
-//resultSetOutput.setText(OutputData);
-        
+		//resultSetOutput.setText(OutputData);
 
-			//	Toast.makeText( getApplicationContext(), "Submited Caldnder Successfully ",Toast.LENGTH_LONG).show();
+
+		Toast.makeText( getApplicationContext(), "Submited Caldnder Successfully ",Toast.LENGTH_LONG).show();
 				
 			}
 		});
@@ -232,24 +197,13 @@ System.out.println("OKAY_settext_outer");
 				// Toast.makeText(getBaseContext(), "onClick!!!",
 				// Toast.LENGTH_SHORT).show();
 
-			//	StrictMode.ThreadPolicy policy = new
-			//	StrictMode.ThreadPolicy.Builder().permitAll().build();
-				// StrictMode.setThreadPolicy(policy);
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-
-				
-		// Spinner element
+			// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
-                
                 public void run() {
                     // TODO Run network requests here.
                     EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
                     EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+                   
                     System.out
                             .println("*********txtId.getText().toString()::"
                                     + txtId.getText().toString()
@@ -363,12 +317,12 @@ System.out.println("OKAY_settext_outer");
 
             // show the data in toast
             
-			Toast.makeText(getApplicationContext(),
-                    "Selected: " + OutputData, Toast.LENGTH_LONG).show();
+			//Toast.makeText(getApplicationContext(),
+          //          "Selected: " + OutputData, Toast.LENGTH_LONG).show();
 //resultSetOutput.setText(OutputData);
 
 				
-				//Toast.makeText( getApplicationContext(), "Calender Updated Successfully ",Toast.LENGTH_LONG).show();
+				Toast.makeText( getApplicationContext(), "Calender Updated Successfully ",Toast.LENGTH_LONG).show();
 			}
 		});
 		buttonCReset.setOnClickListener(new OnClickListener() {
@@ -416,6 +370,16 @@ System.out.println("OKAY_settext_outer");
 	};
 
 
+	TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+
+		@Override
+		public void onTimeSet(TimePicker view, int hour2, int mnt2) {
+			// TODO Auto-generated method stub
+			hr = hour2;
+			mnt = mnt2;
+			updateTime(hr, mnt);
+		}
+	};
 
 
 	@Override
@@ -423,6 +387,34 @@ System.out.println("OKAY_settext_outer");
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.acalender, menu);
 		return true;
+	}
+
+
+
+
+	protected void updateTime(int hr2, int mnt2) {
+		// TODO Auto-generated method stub
+		String timeSet;
+		if (hr > 12) {
+			hr -= 12;
+			timeSet = "PM";
+
+		} else if (hr == 0) {
+			hr += 12;
+			timeSet = "AM";
+		} else if (hr == 12)
+			timeSet = "PM";
+		else
+			timeSet = "AM";
+
+		if (mnt < 10) {
+
+		} else {
+		}
+		String setTime = new StringBuilder().append(hr).append(':').append(mnt)
+				.append(" ").append(timeSet).toString();
+		txtEventTime.setText(setTime);
+		
 	}
 
 

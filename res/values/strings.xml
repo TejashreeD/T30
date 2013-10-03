@@ -29,5 +29,6 @@
     <string name="title_activity_exam_sheet">ExamSheetActivity</string>
     <string name="title_activity_allocate__subject_">Allocate_Subject_Activity</string>
     <string name="title_activity_allocate_sub">AllocateSubActivity</string>
+    <string name="title_activity_spinner_json">SpinnerJson</string>
 
 </resources>
