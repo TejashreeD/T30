@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -27,7 +26,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ATAssignmentActivity extends Activity {
@@ -38,22 +36,27 @@ public class ATAssignmentActivity extends Activity {
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-    EditText AsDate,AeDate;
-	Calendar myCalendar,myCalendar1;
+	Calendar myCalendar, myCalendar1;
+	EditText txtAssId, txtAssStartDate, txtAssEndDate, txtAssDes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_atassignment);
-		Button buttonASSSubmit=(Button) findViewById(R.id.buttonAssSubmit);
-		Button buttonASSReset=(Button) findViewById(R.id.buttonAssReset);
-		Button buttonASSCancel=(Button) findViewById(R.id.buttonAssCancel);
-		
+		Button buttonASSSubmit = (Button) findViewById(R.id.buttonAssSubmit);
+		Button buttonASSReset = (Button) findViewById(R.id.buttonAssReset);
+		Button buttonASSCancel = (Button) findViewById(R.id.buttonAssCancel);
+
+		txtAssId = (EditText) findViewById(R.id.editTextATAssID);
+		txtAssStartDate = (EditText) findViewById(R.id.editTextAssStartDate);
+		txtAssEndDate = (EditText) findViewById(R.id.editTextAssEndDate);
+		txtAssDes = (EditText) findViewById(R.id.editTextAssDescription);
+		// subject id = spinner element
+		// type = spinner element
 		myCalendar = Calendar.getInstance();
-		AsDate = (EditText) findViewById(R.id.editTextAssStartDate);
-AsDate.setOnClickListener(new OnClickListener() {
-			
+		txtAssStartDate = (EditText) findViewById(R.id.editTextAssStartDate);
+		txtAssStartDate.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -62,14 +65,12 @@ AsDate.setOnClickListener(new OnClickListener() {
 								.get(Calendar.MONTH), myCalendar
 								.get(Calendar.DAY_OF_MONTH)).show();
 
-
-				
 			}
 		});
-myCalendar1 = Calendar.getInstance();
-AeDate = (EditText) findViewById(R.id.editTextAssEndDate);
-AeDate.setOnClickListener(new OnClickListener() {
-			
+		myCalendar1 = Calendar.getInstance();
+		txtAssEndDate = (EditText) findViewById(R.id.editTextAssEndDate);
+		txtAssEndDate.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -78,183 +79,191 @@ AeDate.setOnClickListener(new OnClickListener() {
 								.get(Calendar.MONTH), myCalendar1
 								.get(Calendar.DAY_OF_MONTH)).show();
 
-
-				
 			}
 		});
 
+		buttonASSSubmit.setOnClickListener(new OnClickListener() {
 
-buttonASSSubmit.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				System.out.println("onClick!!!");
-				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+				findViewById(R.id.editTextLUsername);
+				findViewById(R.id.editTextLPwd);
 
-				
-		// Spinner element
+				// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
-                
-                public void run() {
-                    // TODO Run network requests here.
-                    EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-                    EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
-                    System.out
-                            .println("*********txtId.getText().toString()::"
-                                    + txtId.getText().toString()
-                                    + txtWord.getText().toString());
+					public void run() {
+						// TODO Run network requests here.
 
-                    HttpClient httpClient = new DefaultHttpClient();
-                    // HttpPost post = new
-                    // HttpPost("http://samidha.org/restTrials/login/");
-                    HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
-                    post.setHeader("content-type",
-                            "application/json; charset=UTF-8");
+						System.out
+								.println("*********txtId.getText().toString()::"
+										+ txtAssId.getText().toString()
+										+ txtAssStartDate.getText().toString()
+										+ txtAssEndDate.getText().toString()
+										+ txtAssDes.getText().toString());
 
-                    // Construimos el objeto cliente en formato JSON
-                    JSONObject dato = new JSONObject();
+						HttpClient httpClient = new DefaultHttpClient();
+						// HttpPost post = new
+						// HttpPost("http://samidha.org/restTrials/login/");
+						HttpPost post = new HttpPost(
+								"http://115.111.105.152/schoolApp/assignment_testEntry");
+						post.setHeader("content-type",
+								"application/json; charset=UTF-8");
 
-                    try {
+						// Construimos el objeto cliente en formato JSON
+						JSONObject dato = new JSONObject();
 
-                        // Toast.makeText(getBaseContext(), "trying!!!",
-                        // Toast.LENGTH_SHORT).show();
+						try {
 
-                        dato.put("email", txtId.getText().toString());
-                        dato.put("pwd", txtWord.getText().toString());
-                        // dato.put("type",
-                        // txtDescription.getText().toString());
+							/*
+							 payload
+							  {
+	        "AssId": "Ass201213002",
+	        "SubjectId": "Sub_English",
+	        "StartDate": "2013-06-10",
+	        "EndDate": "2013-06-20",
+	        "Type": "Assignment",
+	        "Description": "English synonyms"
+	    }, */
+							dato.put("AssId", txtAssId.getText().toString());
+							dato.put("StartDate", txtAssStartDate.getText().toString());
+							dato.put("EndDate", txtAssEndDate.getText().toString());
+							dato.put("Description", txtAssDes.getText().toString());
+							//this is for subject id
+							//dato.put("AssId", txtId.getText().toString());
+							
+							//class spinner element
+							//dato.put("AssId", txtId.getText().toString());
+							
+							//division spinner element
+							//dato.put("AssId", txtId.getText().toString());
+							
+							//types spinner element
+							//dato.put("AssId", txtId.getText().toString());
+							System.out.println("OKAY_0!!");
 
-                        System.out.println("OKAY_0!!");
+							StringEntity entity = new StringEntity(dato
+									.toString());
+							System.out.println("OKAY_1!!");
+							post.setEntity(entity);
+							System.out.println("OKAY_2!!");
 
-                        StringEntity entity = new StringEntity(dato
-                                .toString());
-                        System.out.println("OKAY_1!!");
-                        post.setEntity(entity);
-                        System.out.println("OKAY_2!!");
+							HttpResponse resp = httpClient.execute(post);
+							System.out.println("OKAY_3!!");
+							respStr = EntityUtils.toString(resp.getEntity());
+							System.out.println("OKAY_4!!");
 
-                        HttpResponse resp = httpClient.execute(post);
-                        System.out.println("OKAY_3!!");
-                        respStr = EntityUtils.toString(resp.getEntity());
-                        System.out.println("OKAY_4!!");
+							System.out.println("OKAY_5!!" + respStr);
+							// Toast.makeText(getBaseContext(),
+							// "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
+						} catch (Exception exception) {
+							Log.e("MYAPP", "exception", exception);
+						}
+						/* just try */
 
-                        System.out.println("OKAY_5!!" + respStr);
-                        // Toast.makeText(getBaseContext(),
-                        // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
-                    } catch (Exception exception) {
-                        Log.e("MYAPP", "exception", exception);
-                    }
-                    /* just try */
+						JSONObject jsonResponse;
 
-                    JSONObject jsonResponse;
+						try {
+							System.out.println("OKAY_6!!");
+							/******
+							 * Creates a new JSONObject with name/value mappings
+							 * from the JSON string.
+							 ********/
+							jsonResponse = new JSONObject(respStr);
+							System.out.println("OKAY_7!!");
+							/*****
+							 * Returns the value mapped by name if it exists and
+							 * is a JSONArray.
+							 ***/
+							/******* Returns null otherwise. *******/
+							JSONArray jsonMainNode = jsonResponse
+									.optJSONArray("ResultSet");
+							System.out.println("OKAY_8!!");
+							/*********** Process each JSON Node ***********/
 
-                    try {
-                        System.out.println("OKAY_6!!");
-                        /******
-                         * Creates a new JSONObject with name/value mappings
-                         * from the JSON string.
-                         ********/
-                        jsonResponse = new JSONObject(respStr);
-                        System.out.println("OKAY_7!!");
-                        /*****
-                         * Returns the value mapped by name if it exists and
-                         * is a JSONArray.
-                         ***/
-                        /******* Returns null otherwise. *******/
-                        JSONArray jsonMainNode = jsonResponse
-                                .optJSONArray("ResultSet");
-                        System.out.println("OKAY_8!!");
-                        /*********** Process each JSON Node ***********/
+							int lengthJsonArr = jsonMainNode.length();
 
-                        int lengthJsonArr = jsonMainNode.length();
+							for (int i = 0; i < lengthJsonArr; i++) {
+								System.out.println("OKAY_9!!");
+								/****** Get Object for each JSON node. ***********/
+								JSONObject jsonChildNode = jsonMainNode
+										.getJSONObject(i);
 
-                        for (int i = 0; i < lengthJsonArr; i++) {
-                            System.out.println("OKAY_9!!");
-                            /****** Get Object for each JSON node. ***********/
-                            JSONObject jsonChildNode = jsonMainNode
-                                    .getJSONObject(i);
+								/******* Fetch node values **********/
+								String email = jsonChildNode.optString(
+										"emailId").toString();
+								String pwd = jsonChildNode.optString("pwd")
+										.toString();
 
-                            /******* Fetch node values **********/
-                            String email = jsonChildNode.optString(
-                                    "emailId").toString();
-                            String pwd = jsonChildNode.optString("pwd")
-                                    .toString();
+								String firstname = jsonChildNode.optString(
+										"firstName").toString();
+								String lastname = jsonChildNode.optString(
+										"lastName").toString();
 
-                            String firstname = jsonChildNode.optString(
-                                    "firstName").toString();
-                            String lastname = jsonChildNode.optString(
-                                    "lastName").toString();
+								System.out.println("OKAY_10!!");
+								OutputData += "Node : \n\n     " + email
+										+ " | " + pwd + " | " + firstname
+										+ " | " + lastname + " \n\n ";
+								// Log.i("JSON parse", song_name);
+							}
 
-                            System.out.println("OKAY_10!!");
-                            OutputData += "Node : \n\n     " + email
-                                    + " | " + pwd + " | " + firstname
-                                    + " | " + lastname + " \n\n ";
-                            // Log.i("JSON parse", song_name);
-                        }
+							/************ Show Output on screen/activity **********/
+							System.out.println("OKAY_11!!" + OutputData);
 
-                        /************ Show Output on screen/activity **********/
-                        System.out.println("OKAY_11!!" + OutputData);
+							// startActivity(intent1);
+						} catch (JSONException e) {
 
-                        // startActivity(intent1);
-                    } catch (JSONException e) {
+							e.printStackTrace();
+						}
 
-                        e.printStackTrace();
-                    }
+						/* just try end */
 
-                    /* just try end */
+						System.out.println("OKAY_settext_inner" + OutputData);
 
-                    System.out.println("OKAY_settext_inner" + OutputData);
+					}
 
-                }
+				}.start();
+				System.out.println("OKAY_settext_outer");
 
-            }.start();
-System.out.println("OKAY_settext_outer");
+				// show the data in toast
 
-            // show the data in toast
-            
-			Toast.makeText(getApplicationContext(),
-                    "Selected: " + OutputData, Toast.LENGTH_LONG).show();
-//resultSetOutput.setText(OutputData);
+				Toast.makeText(getApplicationContext(),
+						"Selected: " + OutputData, Toast.LENGTH_LONG).show();
+				// resultSetOutput.setText(OutputData);
 
-				Toast.makeText( getApplicationContext(), "Submited Assignment Detail Successfully ",Toast.LENGTH_LONG).show();
-				
+				Toast.makeText(getApplicationContext(),
+						"Submited Assignment Detail Successfully ",
+						Toast.LENGTH_LONG).show();
+
 			}
 		});
-buttonASSReset.setOnClickListener(new OnClickListener() {
-			
+		buttonASSReset.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				EditText txtAssId=(EditText) findViewById(R.id.editTextATAssID);
-				EditText txtAssSDate=(EditText) findViewById(R.id.editTextAssStartDate);
-				EditText txtAssEDate=(EditText) findViewById(R.id.editTextAssEndDate);
-				EditText txtAssDes=(EditText) findViewById(R.id.editTextAssDescription);
 				txtAssId.setText("");
-				txtAssSDate.setText("");
-				txtAssEDate.setText("");
+				txtAssEndDate.setText("");
+				txtAssStartDate.setText("");
 				txtAssDes.setText("");
-				
-				
+
 			}
 		});
-buttonASSCancel.setOnClickListener(new OnClickListener() {
-	
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		Intent intents=new Intent(ATAssignmentActivity.this,AfterTeacherLoginActivity.class);
-		startActivity(intents);
-		
-	}
-});
+		buttonASSCancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent intents = new Intent(ATAssignmentActivity.this,
+						AfterTeacherLoginActivity.class);
+				startActivity(intents);
+
+			}
+		});
 
 	}
+
 	DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
 		@Override
@@ -264,29 +273,25 @@ buttonASSCancel.setOnClickListener(new OnClickListener() {
 			myCalendar.set(Calendar.YEAR, year);
 			myCalendar.set(Calendar.MONTH, monthOfYear);
 			myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-			
-			 updateLabel();
-			
+
+			updateLabel();
+
 		}
 	};
-		DatePickerDialog.OnDateSetListener date1=new DatePickerDialog.OnDateSetListener() {
-			
-			@Override
-			public void onDateSet(DatePicker view1, int year1, int monthOfYear1,
-					int dayOfMonth1) {
-				// TODO Auto-generated method stub
-				myCalendar1.set(Calendar.YEAR, year1);
-				myCalendar1.set(Calendar.MONTH, monthOfYear1);
-				myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth1);
-			
-			
-				updateLabel1();
-		
-				
-			}
-		};
+	DatePickerDialog.OnDateSetListener date1 = new DatePickerDialog.OnDateSetListener() {
 
+		@Override
+		public void onDateSet(DatePicker view1, int year1, int monthOfYear1,
+				int dayOfMonth1) {
+			// TODO Auto-generated method stub
+			myCalendar1.set(Calendar.YEAR, year1);
+			myCalendar1.set(Calendar.MONTH, monthOfYear1);
+			myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth1);
 
+			updateLabel1();
+
+		}
+	};
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -295,28 +300,22 @@ buttonASSCancel.setOnClickListener(new OnClickListener() {
 		return true;
 	}
 
-
-
 	protected void updateLabel1() {
 		// TODO Auto-generated method stub
 		String myFormat1 = "MM/dd/yy"; // In which you need put here
 		SimpleDateFormat sdf1 = new SimpleDateFormat(myFormat1, Locale.US);
 
-		AeDate.setText(sdf1.format(myCalendar1.getTime()));
+		txtAssEndDate.setText(sdf1.format(myCalendar1.getTime()));
 
-		
 	}
-
-
 
 	protected void updateLabel() {
 		// TODO Auto-generated method stub
 		String myFormat = "MM/dd/yy"; // In which you need put here
 		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-		AsDate.setText(sdf.format(myCalendar.getTime()));
+		txtAssStartDate.setText(sdf.format(myCalendar.getTime()));
 
-		
 	}
 
 }

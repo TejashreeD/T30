@@ -9,7 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ExamSheetActivity" >
 
-    
     <ScrollView
         android:id="@+id/scrollAssignment"
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             android:layout_height="wrap_content" >
 
             <TableRow
-                android:id="@+id/tableAssignmentRow"
+                android:id="@+id/tableAssignmentRow1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2" >
@@ -36,7 +35,6 @@
                     android:textColor="#FF00FF" />
             </TableRow>
 
-           
             <TableRow
                 android:id="@+id/tableAssignmentRow2"
                 android:layout_width="match_parent"
@@ -85,30 +83,67 @@
                 android:layout_height="match_parent"
                 android:weightSum="2" >
 
-                
-<TextView
+                <TextView
                     android:id="@+id/textViewExamEvent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Exam/EventId"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
-                   <EditText
+
+                <EditText
                     android:id="@+id/editTextExamEvent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="date" />
-  
-
-                
-                
             </TableRow>
 
-            
+            <TableRow
+                android:id="@+id/tableAssignmentRow5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewExamSubjectId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Subject Id"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Spinner
+                    android:id="@+id/spinnerExamSujectId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
             <TableRow
                 android:id="@+id/tableAssignmentRow6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewExamType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Exam Type"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Spinner
+                    android:id="@+id/spinnerExamType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableAssignmentRow7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2" >
@@ -131,7 +166,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/tableAssignmentRow7"
+                android:id="@+id/tableAssignmentRow8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2" >
@@ -141,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Submit Date"
+                    android:text="End Date"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
@@ -154,7 +189,30 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/tableAssignmentRow8"
+                android:id="@+id/tableAssignmentRow9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewExamTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Time"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextExamTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="time" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableAssignmentRow10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2" >
@@ -177,9 +235,10 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/tableAssignmentRow9"
+                android:id="@+id/tableAssignmentRow10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_horizontal"
                 android:weightSum="3" >
 
                 <LinearLayout
@@ -219,5 +278,5 @@
             </TableRow>
         </TableLayout>
     </ScrollView>
-    
+
 </RelativeLayout>

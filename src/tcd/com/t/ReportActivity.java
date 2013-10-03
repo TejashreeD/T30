@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -22,7 +21,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ReportActivity extends Activity {
@@ -33,15 +31,12 @@ public class ReportActivity extends Activity {
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_report);
 		Button buttonRCancel=(Button) findViewById(R.id.buttonRCancel);
-		Button buttonRReset=(Button) findViewById(R.id.buttonRReset);
+		findViewById(R.id.buttonRReset);
 		Button buttonRSelectStud=(Button) findViewById(R.id.buttonRSelectStudent);
 		Button buttonRShowReport=(Button) findViewById(R.id.buttonRShowReport);
 		
@@ -65,21 +60,16 @@ public class ReportActivity extends Activity {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			System.out.println("onClick!!!");
-			final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-			final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+			findViewById(R.id.editTextLUsername);
+			findViewById(R.id.editTextLPwd);
 
 			
 	// Spinner element
 			new Thread() {
-            private Context Context;
-			
-            
-            
             public void run() {
                 // TODO Run network requests here.
                 EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
                 EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
                 System.out
                         .println("*********txtId.getText().toString()::"
                                 + txtId.getText().toString()
@@ -207,21 +197,16 @@ System.out.println("OKAY_settext_outer");
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			System.out.println("onClick!!!");
-			final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-			final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+			findViewById(R.id.editTextLUsername);
+			findViewById(R.id.editTextLPwd);
 
 			
 	// Spinner element
 			new Thread() {
-            private Context Context;
-			
-            
-            
             public void run() {
                 // TODO Run network requests here.
                 EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
                 EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
                 System.out
                         .println("*********txtId.getText().toString()::"
                                 + txtId.getText().toString()

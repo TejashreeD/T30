@@ -33,9 +33,6 @@ public class AddSubjectActivity extends Activity {
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,7 +61,7 @@ buttonSubSubmit.setOnClickListener(new OnClickListener() {
                     // TODO Run network requests here.
                     EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
                     EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+                    
                     System.out
                             .println("*********txtId.getText().toString()::"
                                     + txtId.getText().toString()

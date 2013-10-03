@@ -37,8 +37,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-public class TimeTableActivity extends Activity implements OnItemSelectedListener{
+public class TimeTableActivity extends Activity implements
+		OnItemSelectedListener {
 	HttpResponse resp;
 	Intent intent1;
 	private String OutputData;
@@ -55,49 +55,50 @@ public class TimeTableActivity extends Activity implements OnItemSelectedListene
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_time_table);
-		
-		/**
-		 About Spinner*/
-		// Spinner element
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerETTCDIDspinner);
- 
-        // Spinner click listener
-        spinner.setOnItemSelectedListener(this);
- 
-        // Spinner Drop down elements
-        List <String>categories = new ArrayList<String>();
-        categories.add("1A");
-        categories.add("1B");
-        categories.add("2A");
-        categories.add("2B");
-        //categories.add("Student");
- 
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
- 
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
- 
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-    
 
-		
-		
-		Button btnSubmit=(Button) findViewById(R.id.buttonETTSubmit);
-		Button btnReset=(Button) findViewById(R.id.buttonETReset);
-		Button btnCancel=(Button) findViewById(R.id.buttonETCancel);
+		/**
+		 * About Spinner
+		 */
+		// Spinner element
+		Spinner spinner = (Spinner) findViewById(R.id.spinnerETTCDIDspinner);
+
+		// Spinner click listener
+		spinner.setOnItemSelectedListener(this);
+
+		// Spinner Drop down elements
+		List<String> categories = new ArrayList<String>();
+		categories.add("1A");
+		categories.add("1B");
+		categories.add("2A");
+		categories.add("2B");
+		// categories.add("Student");
+
+		// Creating adapter for spinner
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, categories);
+
+		// Drop down layout style - list view with radio button
+		dataAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		// attaching data adapter to spinner
+		spinner.setAdapter(dataAdapter);
+
+		Button btnSubmit = (Button) findViewById(R.id.buttonETTSubmit);
+		Button btnReset = (Button) findViewById(R.id.buttonETReset);
+		Button btnCancel = (Button) findViewById(R.id.buttonETCancel);
 		btnCancel.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
-			Intent intent=new Intent(TimeTableActivity.this,AfterAdminMainActivity.class);
-			startActivity(intent);
+				Intent intent = new Intent(TimeTableActivity.this,
+						AfterAdminMainActivity.class);
+				startActivity(intent);
 			}
 		});
-		
-btnSubmit.setOnClickListener(new OnClickListener() {
-			
+
+		btnSubmit.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
@@ -105,171 +106,164 @@ btnSubmit.setOnClickListener(new OnClickListener() {
 				final EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
 				final EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
 
-				
-		// Spinner element
+				// Spinner element
 				new Thread() {
-                private Context Context;
-				
-                
-                
-                public void run() {
-                    // TODO Run network requests here.
-                    EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
-                    EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
-                    resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
-                    System.out
-                            .println("*********txtId.getText().toString()::"
-                                    + txtId.getText().toString()
-                                    + txtWord.getText().toString());
+					private Context Context;
 
-                    HttpClient httpClient = new DefaultHttpClient();
-                    // HttpPost post = new
-                    // HttpPost("http://samidha.org/restTrials/login/");
-                    HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
-                    post.setHeader("content-type",
-                            "application/json; charset=UTF-8");
+					public void run() {
+						// TODO Run network requests here.
+						EditText txtId = (EditText) findViewById(R.id.editTextLUsername);
+						EditText txtWord = (EditText) findViewById(R.id.editTextLPwd);
+						resultSetOutput = (TextView) findViewById(R.id.textViewOutput);
+						System.out
+								.println("*********txtId.getText().toString()::"
+										+ txtId.getText().toString()
+										+ txtWord.getText().toString());
 
-                    // Construimos el objeto cliente en formato JSON
-                    JSONObject dato = new JSONObject();
+						HttpClient httpClient = new DefaultHttpClient();
+						// HttpPost post = new
+						// HttpPost("http://samidha.org/restTrials/login/");
+						HttpPost post = new HttpPost(
+								"http://115.111.105.152/schoolApp/login");
+						post.setHeader("content-type",
+								"application/json; charset=UTF-8");
 
-                    try {
+						// Construimos el objeto cliente en formato JSON
+						JSONObject dato = new JSONObject();
 
-                        // Toast.makeText(getBaseContext(), "trying!!!",
-                        // Toast.LENGTH_SHORT).show();
+						try {
 
-                        dato.put("email", txtId.getText().toString());
-                        dato.put("pwd", txtWord.getText().toString());
-                        // dato.put("type",
-                        // txtDescription.getText().toString());
+							// Toast.makeText(getBaseContext(), "trying!!!",
+							// Toast.LENGTH_SHORT).show();
 
-                        System.out.println("OKAY_0!!");
+							dato.put("email", txtId.getText().toString());
+							dato.put("pwd", txtWord.getText().toString());
+							// dato.put("type",
+							// txtDescription.getText().toString());
 
-                        StringEntity entity = new StringEntity(dato
-                                .toString());
-                        System.out.println("OKAY_1!!");
-                        post.setEntity(entity);
-                        System.out.println("OKAY_2!!");
+							System.out.println("OKAY_0!!");
 
-                        HttpResponse resp = httpClient.execute(post);
-                        System.out.println("OKAY_3!!");
-                        respStr = EntityUtils.toString(resp.getEntity());
-                        System.out.println("OKAY_4!!");
+							StringEntity entity = new StringEntity(dato
+									.toString());
+							System.out.println("OKAY_1!!");
+							post.setEntity(entity);
+							System.out.println("OKAY_2!!");
 
-                        System.out.println("OKAY_5!!" + respStr);
-                        // Toast.makeText(getBaseContext(),
-                        // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
-                    } catch (Exception exception) {
-                        Log.e("MYAPP", "exception", exception);
-                    }
-                    /* just try */
+							HttpResponse resp = httpClient.execute(post);
+							System.out.println("OKAY_3!!");
+							respStr = EntityUtils.toString(resp.getEntity());
+							System.out.println("OKAY_4!!");
 
-                    JSONObject jsonResponse;
+							System.out.println("OKAY_5!!" + respStr);
+							// Toast.makeText(getBaseContext(),
+							// "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
+						} catch (Exception exception) {
+							Log.e("MYAPP", "exception", exception);
+						}
+						/* just try */
 
-                    try {
-                        System.out.println("OKAY_6!!");
-                        /******
-                         * Creates a new JSONObject with name/value mappings
-                         * from the JSON string.
-                         ********/
-                        jsonResponse = new JSONObject(respStr);
-                        System.out.println("OKAY_7!!");
-                        /*****
-                         * Returns the value mapped by name if it exists and
-                         * is a JSONArray.
-                         ***/
-                        /******* Returns null otherwise. *******/
-                        JSONArray jsonMainNode = jsonResponse
-                                .optJSONArray("ResultSet");
-                        System.out.println("OKAY_8!!");
-                        /*********** Process each JSON Node ***********/
+						JSONObject jsonResponse;
 
-                        int lengthJsonArr = jsonMainNode.length();
+						try {
+							System.out.println("OKAY_6!!");
+							/******
+							 * Creates a new JSONObject with name/value mappings
+							 * from the JSON string.
+							 ********/
+							jsonResponse = new JSONObject(respStr);
+							System.out.println("OKAY_7!!");
+							/*****
+							 * Returns the value mapped by name if it exists and
+							 * is a JSONArray.
+							 ***/
+							/******* Returns null otherwise. *******/
+							JSONArray jsonMainNode = jsonResponse
+									.optJSONArray("ResultSet");
+							System.out.println("OKAY_8!!");
+							/*********** Process each JSON Node ***********/
 
-                        for (int i = 0; i < lengthJsonArr; i++) {
-                            System.out.println("OKAY_9!!");
-                            /****** Get Object for each JSON node. ***********/
-                            JSONObject jsonChildNode = jsonMainNode
-                                    .getJSONObject(i);
+							int lengthJsonArr = jsonMainNode.length();
 
-                            /******* Fetch node values **********/
-                            String email = jsonChildNode.optString(
-                                    "emailId").toString();
-                            String pwd = jsonChildNode.optString("pwd")
-                                    .toString();
+							for (int i = 0; i < lengthJsonArr; i++) {
+								System.out.println("OKAY_9!!");
+								/****** Get Object for each JSON node. ***********/
+								JSONObject jsonChildNode = jsonMainNode
+										.getJSONObject(i);
 
-                            String firstname = jsonChildNode.optString(
-                                    "firstName").toString();
-                            String lastname = jsonChildNode.optString(
-                                    "lastName").toString();
+								/******* Fetch node values **********/
+								String email = jsonChildNode.optString(
+										"emailId").toString();
+								String pwd = jsonChildNode.optString("pwd")
+										.toString();
 
-                            System.out.println("OKAY_10!!");
-                            OutputData += "Node : \n\n     " + email
-                                    + " | " + pwd + " | " + firstname
-                                    + " | " + lastname + " \n\n ";
-                            // Log.i("JSON parse", song_name);
-                        }
+								String firstname = jsonChildNode.optString(
+										"firstName").toString();
+								String lastname = jsonChildNode.optString(
+										"lastName").toString();
 
-                        /************ Show Output on screen/activity **********/
-                        System.out.println("OKAY_11!!" + OutputData);
+								System.out.println("OKAY_10!!");
+								OutputData += "Node : \n\n     " + email
+										+ " | " + pwd + " | " + firstname
+										+ " | " + lastname + " \n\n ";
+								// Log.i("JSON parse", song_name);
+							}
 
-                        // startActivity(intent1);
-                    } catch (JSONException e) {
+							/************ Show Output on screen/activity **********/
+							System.out.println("OKAY_11!!" + OutputData);
 
-                        e.printStackTrace();
-                    }
+							// startActivity(intent1);
+						} catch (JSONException e) {
 
-                    /* just try end */
+							e.printStackTrace();
+						}
 
-                    System.out.println("OKAY_settext_inner" + OutputData);
+						/* just try end */
 
-                }
+						System.out.println("OKAY_settext_inner" + OutputData);
 
-            }.start();
-System.out.println("OKAY_settext_outer");
+					}
 
-            // show the data in toast
-            
-			Toast.makeText(getApplicationContext(),
-                    "Selected: " + OutputData, Toast.LENGTH_LONG).show();
-//resultSetOutput.setText(OutputData);
+				}.start();
+				System.out.println("OKAY_settext_outer");
 
-				Toast.makeText( getApplicationContext(), "Submited Exam Detail Successfully ",Toast.LENGTH_LONG).show();
-				
+				// show the data in toast
+
+				Toast.makeText(getApplicationContext(),
+						"Selected: " + OutputData, Toast.LENGTH_LONG).show();
+				// resultSetOutput.setText(OutputData);
+
+				Toast.makeText(getApplicationContext(),
+						"Submited Exam Detail Successfully ", Toast.LENGTH_LONG)
+						.show();
+
 			}
 		});
-btnReset.setOnClickListener(new OnClickListener() {
-			
+		btnReset.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				EditText txtEid=(EditText) findViewById(R.id.editTextExamtimeTableID);
-				EditText txtEdate=(EditText) findViewById(R.id.editTextExamDate);
+				EditText txtEid = (EditText) findViewById(R.id.editTextExamtimeTableID);
+				EditText txtEdate = (EditText) findViewById(R.id.editTextExamDate);
 				txtEid.setText("");
 				txtEdate.setText("");
-				
-				
+
 			}
 		});
 
+		ExamDate = (EditText) findViewById(R.id.editTextExamDate);
+		ExamDate.setOnClickListener(new OnClickListener() {
 
-ExamDate = (EditText) findViewById(R.id.editTextExamDate);
-ExamDate.setOnClickListener(new OnClickListener() {
-	
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		myCalendar = Calendar.getInstance();
-		new DatePickerDialog(TimeTableActivity.this, date,
-				myCalendar.get(Calendar.YEAR), myCalendar
-						.get(Calendar.MONTH), myCalendar
-						.get(Calendar.DAY_OF_MONTH)).show();
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				myCalendar = Calendar.getInstance();
+				new DatePickerDialog(TimeTableActivity.this, date, myCalendar
+						.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+						myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
-		
-
-		
-	                   }
-                        });
+			}
+		});
 
 	}
 
@@ -277,25 +271,24 @@ ExamDate.setOnClickListener(new OnClickListener() {
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
 		// On selecting a spinner item
-        String item = parent.getItemAtPosition(pos).toString();
- 
+		String item = parent.getItemAtPosition(pos).toString();
+
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		
+
 	}
+
 	protected void updateLabel() {
 		// TODO Auto-generated method stub
-		 String myFormat = "MM/dd/yy"; // In which you need put here
-		 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+		String myFormat = "MM/dd/yy"; // In which you need put here
+		SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-	     ExamDate.setText(sdf.format(myCalendar.getTime()));
+		ExamDate.setText(sdf.format(myCalendar.getTime()));
 
-		
 	}
 
-	
 	DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
 		@Override
@@ -308,11 +301,6 @@ ExamDate.setOnClickListener(new OnClickListener() {
 			updateLabel();
 		}
 
-		
 	};
 
-	
-
-
-	
 }

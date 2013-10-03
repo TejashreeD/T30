@@ -115,7 +115,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
-                    android:id="@+id/editTextATEventName"
+                    android:id="@+id/editTextEventName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,7 +130,7 @@
                 android:weightSum="2" >
 
                 <TextView
-                    android:id="@+id/textViewATDescription"
+                    android:id="@+id/textViewDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -138,7 +138,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
-                    android:id="@+id/editTextATDescription"
+                    android:id="@+id/editTextEventDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

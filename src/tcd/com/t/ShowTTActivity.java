@@ -18,8 +18,8 @@ public class ShowTTActivity extends Activity {
 
 	final static int TIME = 1111;
 	Calendar calendar = Calendar.getInstance();
-	int hr = calendar.get(calendar.HOUR_OF_DAY);
-	int mnt = calendar.get(calendar.MINUTE);
+	int hr = calendar.get(Calendar.HOUR_OF_DAY);
+	int mnt = calendar.get(Calendar.MINUTE);
 	EditText txtStartTime;
 	EditText txtEndTime;
 

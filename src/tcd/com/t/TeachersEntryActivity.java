@@ -22,10 +22,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -39,12 +37,13 @@ public class TeachersEntryActivity extends Activity {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	private String respStr;
-	private TextView resultSetOutput;
-
+	String respStr;
+	TextView resultSetOutput;
+	EditText txtSchId,txtFirstName,txtMiddleName,txtLastName,txtDesignation,txtAddress,txtEmail,txtQualification,txtBDate,txtPwd;
 
 	EditText DOB;
 	Calendar myCalendar;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +53,19 @@ public class TeachersEntryActivity extends Activity {
 		Button buttonPReset = (Button) findViewById(R.id.buttonPReset);
 		Button buttonPCancel = (Button) findViewById(R.id.buttonASCancel);
 
+		txtSchId = (EditText) findViewById(R.id.editTextPSchId);
+		txtFirstName = (EditText) findViewById(R.id.editTextPFirstName);
+		txtMiddleName = (EditText) findViewById(R.id.editTextPMiddleName);
+		txtLastName = (EditText) findViewById(R.id.editTextPLastName);
+		txtDesignation = (EditText) findViewById(R.id.editTextPDesignation);
+		txtAddress = (EditText) findViewById(R.id.editTextPAddress);
+		txtEmail = (EditText) findViewById(R.id.editTextPEmail);
+		txtQualification = (EditText) findViewById(R.id.editTextPQualification);
+		txtBDate = (EditText) findViewById(R.id.editTextPDate);
+		txtPwd = (EditText) findViewById(R.id.editTextPPassword);
+		
+		
+		
 		myCalendar = Calendar.getInstance();
 
 		DOB = (EditText) findViewById(R.id.editTextPDate);
@@ -77,26 +89,16 @@ public class TeachersEntryActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				EditText txtPSchId = (EditText) findViewById(R.id.editTextPSchId);
-				EditText txtPFName = (EditText) findViewById(R.id.editTextPFirstName);
-				EditText txtPMName = (EditText) findViewById(R.id.editTextPMiddleName);
-				EditText txtPLName = (EditText) findViewById(R.id.editTextPLastName);
-				EditText txtPDeg = (EditText) findViewById(R.id.editTextPDesignation);
-				EditText txtPAddress = (EditText) findViewById(R.id.editTextPAddress);
-				EditText txtPEmail = (EditText) findViewById(R.id.editTextPEmail);
-				EditText txtPQualification = (EditText) findViewById(R.id.editTextPQualification);
-				EditText txtPBDate = (EditText) findViewById(R.id.editTextPDate);
-				EditText txtPPwd = (EditText) findViewById(R.id.editTextPPassword);
-				txtPSchId.setText("");
-				txtPFName.setText("");
-				txtPMName.setText("");
-				txtPLName.setText("");
-				txtPDeg.setText("");
-				txtPAddress.setText("");
-				txtPEmail.setText("");
-				txtPQualification.setText("");
-				txtPPwd.setText("");
-				txtPBDate.setText("");
+				txtSchId.setText("");
+				txtFirstName.setText("");
+				txtMiddleName.setText("");
+				txtLastName.setText("");
+				txtDesignation.setText("");
+				txtAddress.setText("");
+				txtEmail.setText("");
+				txtQualification.setText("");
+				txtPwd.setText("");
+				txtBDate.setText("");
 			}
 		});
 		buttonPCancel.setOnClickListener(new OnClickListener() {
@@ -151,7 +153,7 @@ public class TeachersEntryActivity extends Activity {
                     // HttpPost post = new
                     // HttpPost("http://samidha.org/restTrials/login/");
                     HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/login");
+                            "http://115.111.105.152/schoolApp/personEntry");
                     post.setHeader("content-type",
                             "application/json; charset=UTF-8");
 
@@ -159,9 +161,6 @@ public class TeachersEntryActivity extends Activity {
                     JSONObject dato = new JSONObject();
 
                     try {
-
-                        // Toast.makeText(getBaseContext(), "trying!!!",
-                        // Toast.LENGTH_SHORT).show();
 
                         dato.put("email", txtId.getText().toString());
                         dato.put("pwd", txtWord.getText().toString());

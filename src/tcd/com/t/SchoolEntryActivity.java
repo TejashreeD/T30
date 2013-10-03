@@ -8,31 +8,24 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class SchoolEntryActivity extends Activity {
 	HttpResponse resp;
 	Intent intent1;
-	private String OutputData;
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
 	private String respStr;
-	private TextView resultSetOutput;
 	protected EditText txtSchId;
 	protected EditText txtSchName;
 	protected EditText txtSchLoc;
