@@ -8,10 +8,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SpinnerJson" >
 
+    <Button
+        android:id="@+id/buttonTTBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/yellobtn"
+        android:text="Show" />
+
     <Spinner
         android:id="@+id/spinnerNew"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp" />
 
 </RelativeLayout>

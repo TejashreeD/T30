@@ -119,6 +119,10 @@
         <activity
             android:name="tcd.com.t.SpinnerJson"
             android:label="@string/title_activity_spinner_json" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.ListView"
+            android:label="@string/title_activity_list_view" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
