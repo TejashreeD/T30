@@ -30,7 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ListView extends Activity implements OnItemSelectedListener {
+public class ListView extends Activity  {
 
 	JSONObject jsonResponse;
 	JSONArray jsonMainNode;
@@ -46,10 +46,32 @@ ListView lists;
 		setContentView(R.layout.activity_list_view);
 		final Button GetServerData = (Button) findViewById(R.id.buttonTimatableGo);
 
-		Spinner spinner = (Spinner) findViewById(R.id.spinnerNew);
+		final Spinner spinner = (Spinner) findViewById(R.id.spinnerNew);
 				// Spinner click listener
-		spinner.setOnItemSelectedListener(this);
+		//spinner.setOnItemSelectedListener(this);
 
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				// TODO Auto-generated method stub
+				//Object obj=parent.getItemAtPosition(pos);
+				//String obj=Classes.get(pos);
+				//String obj=spinner.getAdapter().getItem(pos).toString();
+				//String obj=(String) spinner.getAdapter().getItem(pos);
+				
+spinner.setSelection(1);
+				//Toast.makeText(parent.getContext(), "Selected: " + obj,Toast.LENGTH_LONG).show();
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		// Creating adapter for spinner
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, Classes);
@@ -170,19 +192,22 @@ ListView lists;
 		}
 
 	}
-
-	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,
-			long id) {
-		// TODO Auto-generated method stub
-		item = parent.getItemAtPosition(pos).toString();
-		Toast.makeText(parent.getContext(), "Selected: " + item,
-				Toast.LENGTH_LONG).show();
-	}
-
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-
-	}
+//
+//	@Override
+//	public void onItemSelected(AdapterView<?> parent, View view, int pos,
+//			long id) {
+//		// TODO Auto-generated method stub
+//		Object obj=parent.getItemAtPosition(pos);
+//		Toast.makeText(parent.getContext(), "Selected: " + obj,
+//				Toast.LENGTH_LONG).show();
+//		item = parent.getItemAtPosition(pos).toString();
+//		Toast.makeText(parent.getContext(), "Selected: " + item,
+//				Toast.LENGTH_LONG).show();
+//	}
+//
+//	@Override
+//	public void onNothingSelected(AdapterView<?> arg0) {
+//		// TODO Auto-generated method stub
+//
+//	}
 }
