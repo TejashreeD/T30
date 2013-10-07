@@ -174,8 +174,7 @@
                 android:id="@+id/editTextStudentInfo7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="2"
-                >
+                android:weightSum="2" >
 
                 <TextView
                     android:id="@+id/textViewStudPid"
@@ -185,11 +184,13 @@
                     android:text="Parent ID"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <Spinner
-                    android:id="@+id/spinnerStudPid"
+                <EditText
+                    android:id="@+id/editTextStudPid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
             </TableRow>
 
             <TableRow
@@ -202,8 +203,8 @@
                     android:id="@+id/LinearLayoutButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_horizontal"
+                    android:orientation="horizontal"
                     android:padding="10dp" >
 
                     <Button

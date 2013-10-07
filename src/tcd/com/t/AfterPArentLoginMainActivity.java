@@ -36,8 +36,12 @@ buttonLogout.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText( getApplicationContext(), "Showing Academic progress Successfully ",Toast.LENGTH_LONG).show();
-							}
+				//Toast.makeText( getApplicationContext(), "Showing Academic progress Successfully ",Toast.LENGTH_LONG).show();
+				Intent intent = new Intent(AfterPArentLoginMainActivity.this,
+						SingleStudentReportActivity.class);
+				startActivity(intent);
+						
+			}
 		});
 		buttonShowExtracProgress.setOnClickListener(new OnClickListener() {
 			

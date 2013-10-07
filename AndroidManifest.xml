@@ -19,6 +19,11 @@
             android:name="tcd.com.t.LoginMainActivity"
             android:label="@string/app_name"
             android:permission="android.permission.INTERNET" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="tcd.com.t.SchoolEntryActivity"
@@ -95,6 +100,7 @@
         <activity
             android:name="tcd.com.t.ClassDivActivity"
             android:label="@string/title_activity_class_div" >
+           
         </activity>
         <activity
             android:name="tcd.com.t.ShowTTActivity"
@@ -119,16 +125,50 @@
         <activity
             android:name="tcd.com.t.SpinnerJson"
             android:label="@string/title_activity_spinner_json" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="tcd.com.t.ListView"
             android:label="@string/title_activity_list_view" >
-            
+        </activity>
+        <activity
+            android:name="tcd.com.t.AfterAdminReportMainActivity"
+            android:label="@string/title_activity_after_admin_report_main" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.SingleStudentReportActivity"
+            android:label="@string/title_activity_single_student_report" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AllAlarmActivity"
+            android:label="@string/title_activity_all_alarm" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AllAssignmentActivity"
+            android:label="@string/title_activity_all_assignment" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AllTestActivity"
+            android:label="@string/title_activity_all_test" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AllAsgWithStudIdActivity"
+            android:label="@string/title_activity_all_asg_with_stud_id" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AllTestWithSidActivity"
+            android:label="@string/title_activity_all_test_with_sid" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AlarmReportActivity"
+            android:label="@string/title_activity_alarm_report" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.AssigmentReportActivity"
+            android:label="@string/title_activity_assigment_report" >
+        </activity>
+        <activity
+            android:name="tcd.com.t.TestReportActivity"
+            android:label="@string/title_activity_test_report" >
         </activity>
     </application>
 

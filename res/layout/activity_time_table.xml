@@ -29,8 +29,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Exam Timetable "
-                    android:textColor="#FF00FF"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FF00FF" />
             </TableRow>
 
             <TableRow
@@ -79,6 +79,52 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/editTextTimetableInfo31"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewETTEndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="End Date"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextExamEndDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="date" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextTimetableInfo32"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewETTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Time"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/editTextExamTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="time" />
+            </TableRow>
+
+            <TableRow
                 android:id="@+id/editTextTimetableInfo4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -106,6 +152,27 @@
                 android:weightSum="2" >
 
                 <TextView
+                    android:id="@+id/textViewDivision1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Division"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Spinner
+                    android:id="@+id/spinnerDivision"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/editTextTimetableInfo6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="2" >
+
+                <TextView
                     android:id="@+id/textViewETTSubjectId"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -114,14 +181,14 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Spinner
-                    android:id="@+id/spinnerAssDivision"
+                    android:id="@+id/spinnerSubject"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </TableRow>
 
             <TableRow
-                android:id="@+id/editTextTimetableInfo6"
+                android:id="@+id/editTextTimetableInfo7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -142,8 +209,30 @@
                     android:layout_weight="1" />
             </TableRow>
 
+             <TableRow
+                android:id="@+id/editTextTimetableInfo71"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="2" >
+
+                <TextView
+                    android:id="@+id/textViewETDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Description"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <Spinner
+                    android:id="@+id/spinnerTestDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </TableRow>
+            
             <TableRow
-                android:id="@+id/editTextTimetableInfo7"
+                android:id="@+id/editTextTimetableInfo8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:weightSum="2" >
@@ -160,8 +249,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
-                        android:background="@drawable/yellobtn"
                         android:layout_marginRight="20dp"
+                        android:background="@drawable/yellobtn"
                         android:text="Submit" />
 
                     <Button
@@ -169,7 +258,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                         android:layout_marginRight="20dp"
+                        android:layout_marginRight="20dp"
                         android:background="@drawable/yellobtn"
                         android:text="Reset" />
 

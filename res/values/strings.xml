@@ -31,5 +31,15 @@
     <string name="title_activity_allocate_sub">AllocateSubActivity</string>
     <string name="title_activity_spinner_json">SpinnerJson</string>
     <string name="title_activity_list_view">ListView</string>
+    <string name="title_activity_after_admin_report_main">AfterAdminReportMainActivity</string>
+    <string name="title_activity_single_student_report">SingleStudentReportActivity</string>
+    <string name="title_activity_all_alarm">AllAlarmActivity</string>
+    <string name="title_activity_all_assignment">AllAssignmentActivity</string>
+    <string name="title_activity_all_test">AllTestActivity</string>
+    <string name="title_activity_all_asg_with_stud_id">AllAsgWithStudIdActivity</string>
+    <string name="title_activity_all_test_with_sid">AllTestWithSidActivity</string>
+    <string name="title_activity_alarm_report">AlarmReportActivity</string>
+    <string name="title_activity_assigment_report">AssigmentReportActivity</string>
+    <string name="title_activity_test_report">TestReportActivity</string>
 
 </resources>

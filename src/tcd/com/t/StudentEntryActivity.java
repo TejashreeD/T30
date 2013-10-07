@@ -10,9 +10,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
@@ -34,7 +31,6 @@ public class StudentEntryActivity extends Activity {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	private String respStr;
 	EditText studPrn;
 	EditText fName;
 	EditText SDOB;
@@ -42,192 +38,129 @@ public class StudentEntryActivity extends Activity {
 	protected EditText mName;
 	protected EditText lName;
 	protected EditText email;
-	protected EditText bDate;
+	protected EditText bDate, pid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_student_entry);
-		Button buttonCancel=(Button) findViewById(R.id.buttonASCancel);
-		Button buttonReset=(Button) findViewById(R.id.buttonASReset);
-		Button buttonSSubmit=(Button) findViewById(R.id.buttonASSubmit);
-		
-		studPrn=(EditText) findViewById(R.id.editTextStudPRN);
-		fName=(EditText) findViewById(R.id.editTextStudFname);
-		mName=(EditText) findViewById(R.id.editTextStudMname);
-		lName=(EditText) findViewById(R.id.editTextStudLname);
-		email=(EditText) findViewById(R.id.editTextStudEmail);
-		bDate=(EditText) findViewById(R.id.editTextStudBday);
-		
+		Button buttonCancel = (Button) findViewById(R.id.buttonASCancel);
+		Button buttonReset = (Button) findViewById(R.id.buttonASReset);
+		Button buttonSSubmit = (Button) findViewById(R.id.buttonASSubmit);
+
+		studPrn = (EditText) findViewById(R.id.editTextStudPRN);
+		fName = (EditText) findViewById(R.id.editTextStudFname);
+		mName = (EditText) findViewById(R.id.editTextStudMname);
+		lName = (EditText) findViewById(R.id.editTextStudLname);
+		email = (EditText) findViewById(R.id.editTextStudEmail);
+		bDate = (EditText) findViewById(R.id.editTextStudBday);
+		pid = (EditText) findViewById(R.id.editTextStudPid);
 		buttonCancel.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				Intent intent=new Intent(StudentEntryActivity.this, AfterAdminMainActivity.class);
+				Intent intent = new Intent(StudentEntryActivity.this,
+						AfterAdminMainActivity.class);
 				startActivity(intent);
 			}
 		});
-		
+
 		buttonReset.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				
+
 				studPrn.setText("");
 				bDate.setText("");
 				fName.setText("");
 				mName.setText("");
 				lName.setText("");
 				email.setText("");
-					}
+				pid.setText("");
+			}
 		});
 		buttonSSubmit.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				System.out.println("onClick!!!");
-				
 
-				
-		// Spinner element
+				// Spinner element
 				new Thread() {
-                public void run() {
-                    // TODO Run network requests here.
-                   
-                    System.out.println("*********txtId.getText().toString()::"
-                    		+studPrn.getText().toString()+
-            				bDate.getText().toString()+
-            				fName.getText().toString()+
-            				mName.getText().toString()+
-            				lName.getText().toString()+
-            				email.getText().toString()
-                                    );
+					public void run() {
+						// TODO Run network requests here.
 
-                    HttpClient httpClient = new DefaultHttpClient();
-                    // HttpPost post = new
-                    // HttpPost("http://samidha.org/restTrials/login/");
-                    HttpPost post = new HttpPost(
-                            "http://115.111.105.152/schoolApp/studentEntry");
-                    post.setHeader("content-type",
-                            "application/json; charset=UTF-8");
+						System.out
+								.println("*********txtId.getText().toString()::"
+										+ studPrn.getText().toString()
+										+ bDate.getText().toString()
+										+ fName.getText().toString()
+										+ mName.getText().toString()
+										+ lName.getText().toString()
+										+ email.getText().toString()
+										+ pid.getText().toString());
 
-                    // Construimos el objeto cliente en formato JSON
-                    JSONObject dato = new JSONObject();
+						HttpClient httpClient = new DefaultHttpClient();
+						// HttpPost post = new
+						// HttpPost("http://samidha.org/restTrials/login/");
+						HttpPost post = new HttpPost(
+								"http://115.111.105.152/schoolApp/studentEntry");
+						post.setHeader("content-type",
+								"application/json; charset=UTF-8");
 
-                    try {
+						// Construimos el objeto cliente en formato JSON
+						JSONObject dato = new JSONObject();
 
-                     
-                        dato.put("PRN", studPrn.getText().toString());
-                        dato.put("firstName", fName.getText().toString());
-                        dato.put("middleName", mName.getText().toString());
-                        dato.put("lastName", lName.getText().toString());
-                        dato.put("DOB", bDate.getText().toString());
-                        dato.put("emailId", email.getText().toString());
-                       // dato.put("pid", email.getText().toString()); its important spinner related
-                        
-                        System.out.println("OKAY_0!!");
+						try {
+							dato.put("PRN", studPrn.getText().toString());
+							dato.put("firstName", fName.getText().toString());
+							dato.put("middleName", mName.getText().toString());
+							dato.put("lastName", lName.getText().toString());
+							dato.put("DOB", bDate.getText().toString());
+							dato.put("emailId", email.getText().toString());
+							dato.put("pid", pid.getText().toString());
+							System.out.println("OKAY_0!!");
 
-                        StringEntity entity = new StringEntity(dato
-                                .toString());
-                        System.out.println("OKAY_1!!");
-                        post.setEntity(entity);
-                        System.out.println("OKAY_2!!");
+							StringEntity entity = new StringEntity(dato
+									.toString());
+							System.out.println("OKAY_1!!");
+							post.setEntity(entity);
+							System.out.println("OKAY_2!!");
 
-                        HttpResponse resp = httpClient.execute(post);
-                        System.out.println("OKAY_3!!");
-                        respStr = EntityUtils.toString(resp.getEntity());
-                        System.out.println("OKAY_4!!");
+							httpClient.execute(post);
+							System.out.println("OKAY_3!!");
+							//respStr = EntityUtils.toString(resp.getEntity());
+							System.out.println("OKAY_4!!");
 
-                        System.out.println("OKAY_5!!" + respStr);
-                        // Toast.makeText(getBaseContext(),
-                        // "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
-                    } catch (Exception exception) {
-                        Log.e("MYAPP", "exception", exception);
-                    }
-                    /* just try */
+							//sSystem.out.println("OKAY_5!!" + respStr);
+							// Toast.makeText(getBaseContext(),
+							// "OKAY!!!"+respStr, Toast.LENGTH_SHORT).show();
+						} catch (Exception exception) {
+							Log.e("MYAPP", "exception", exception);
+						}
 
-                    JSONObject jsonResponse;
+					}
 
-                    try {
-                        System.out.println("OKAY_6!!");
-                        /******
-                         * Creates a new JSONObject with name/value mappings
-                         * from the JSON string.
-                         ********/
-                        jsonResponse = new JSONObject(respStr);
-                        System.out.println("OKAY_7!!");
-                        /*****
-                         * Returns the value mapped by name if it exists and
-                         * is a JSONArray.
-                         ***/
-                        /******* Returns null otherwise. *******/
-                        JSONArray jsonMainNode = jsonResponse
-                                .optJSONArray("ResultSet");
-                        System.out.println("OKAY_8!!");
-                        /*********** Process each JSON Node ***********/
+				}.start();
+				System.out.println("OKAY_settext_outer");
 
-                        int lengthJsonArr = jsonMainNode.length();
+				// show the data in toast
 
-                        for (int i = 0; i < lengthJsonArr; i++) {
-                            System.out.println("OKAY_9!!");
-                            /****** Get Object for each JSON node. ***********/
-                            JSONObject jsonChildNode = jsonMainNode
-                                    .getJSONObject(i);
+				Toast.makeText(getApplicationContext(),
+						"Selected: " + OutputData, Toast.LENGTH_LONG).show();
+				// resultSetOutput.setText(OutputData);
 
-                            /******* Fetch node values **********/
-                            String email = jsonChildNode.optString(
-                                    "emailId").toString();
-                            String pwd = jsonChildNode.optString("pwd")
-                                    .toString();
-
-                            String firstname = jsonChildNode.optString(
-                                    "firstName").toString();
-                            String lastname = jsonChildNode.optString(
-                                    "lastName").toString();
-
-                            System.out.println("OKAY_10!!");
-                            OutputData += "Node : \n\n     " + email
-                                    + " | " + pwd + " | " + firstname
-                                    + " | " + lastname + " \n\n ";
-                            // Log.i("JSON parse", song_name);
-                        }
-
-                        /************ Show Output on screen/activity **********/
-                        System.out.println("OKAY_11!!" + OutputData);
-
-                        // startActivity(intent1);
-                    } catch (JSONException e) {
-
-                        e.printStackTrace();
-                    }
-
-                    /* just try end */
-
-                    System.out.println("OKAY_settext_inner" + OutputData);
-
-                }
-
-            }.start();
-System.out.println("OKAY_settext_outer");
-
-            // show the data in toast
-            
-			Toast.makeText(getApplicationContext(),
-                    "Selected: " + OutputData, Toast.LENGTH_LONG).show();
-//resultSetOutput.setText(OutputData);
-
-
-				
-				Toast.makeText( getApplicationContext(), "Submited Student Detail Successfully ",Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(),
+						"Submited Student Detail Successfully ",
+						Toast.LENGTH_LONG).show();
 			}
 		});
-		
+
 		myCalendar = Calendar.getInstance();
 
-	
 		bDate.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -236,8 +169,6 @@ System.out.println("OKAY_settext_outer");
 								.get(Calendar.MONTH), myCalendar
 								.get(Calendar.DAY_OF_MONTH)).show();
 
-
-				
 			}
 		});
 
@@ -262,11 +193,8 @@ System.out.println("OKAY_settext_outer");
 
 			bDate.setText(sdf.format(myCalendar.getTime()));
 
-			
 		}
 
-		
 	};
-
 
 }

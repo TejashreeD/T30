@@ -119,7 +119,7 @@ public class LoginMainActivity extends Activity implements
 							 * Creates a new JSONObject with name/value mappings
 							 * from the JSON string.
 							 ********/
-							jsonResponse = new JSONObject(respStr);
+	jsonResponse = new JSONObject(respStr);
 							System.out.println("OKAY_7!!");
 							/*****
 							 * Returns the value mapped by name if it exists and

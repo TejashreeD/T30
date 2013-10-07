@@ -254,6 +254,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
+                android:gravity="center_horizontal"
                 android:weightSum="1" >
 
                 <Button
@@ -273,6 +274,7 @@
                 android:id="@+id/editTextSchoolInfo11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:gravity="center_horizontal"
                 android:weightSum="3" >
 
                 <LinearLayout

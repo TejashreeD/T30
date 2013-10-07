@@ -3,8 +3,6 @@ package tcd.com.t;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
@@ -28,7 +26,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ListView extends Activity  {
 
@@ -81,7 +78,7 @@ spinner.setSelection(1);
 		spinner.setAdapter(dataAdapter);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 	              android.R.layout.simple_list_item_1, android.R.id.text1, Classes);
-		
+		spinner.setAdapter(adapter);
 		GetServerData.setOnClickListener(new OnClickListener() {
 
 			@Override
