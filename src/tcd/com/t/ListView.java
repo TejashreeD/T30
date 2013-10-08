@@ -27,7 +27,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class ListView extends Activity  {
+public class ListView extends Activity {
 
 	JSONObject jsonResponse;
 	JSONArray jsonMainNode;
@@ -35,8 +35,8 @@ public class ListView extends Activity  {
 	// Spinner Drop down elements
 	List<String> Classes = new ArrayList<String>();
 	List<String> list = new ArrayList<String>();
-ListView lists;
-	
+	ListView lists;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,8 +44,8 @@ ListView lists;
 		final Button GetServerData = (Button) findViewById(R.id.buttonTimatableGo);
 
 		final Spinner spinner = (Spinner) findViewById(R.id.spinnerNew);
-				// Spinner click listener
-		//spinner.setOnItemSelectedListener(this);
+		// Spinner click listener
+		// spinner.setOnItemSelectedListener(this);
 
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -53,20 +53,21 @@ ListView lists;
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int pos, long id) {
 				// TODO Auto-generated method stub
-				//Object obj=parent.getItemAtPosition(pos);
-				//String obj=Classes.get(pos);
-				//String obj=spinner.getAdapter().getItem(pos).toString();
-				//String obj=(String) spinner.getAdapter().getItem(pos);
-				
-spinner.setSelection(1);
-				//Toast.makeText(parent.getContext(), "Selected: " + obj,Toast.LENGTH_LONG).show();
-				
+				// Object obj=parent.getItemAtPosition(pos);
+				// String obj=Classes.get(pos);
+				// String obj=spinner.getAdapter().getItem(pos).toString();
+				// String obj=(String) spinner.getAdapter().getItem(pos);
+
+				spinner.setSelection(1);
+				// Toast.makeText(parent.getContext(), "Selected: " +
+				// obj,Toast.LENGTH_LONG).show();
+
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		// Creating adapter for spinner
@@ -77,7 +78,8 @@ spinner.setSelection(1);
 		// attaching data adapter to spinner
 		spinner.setAdapter(dataAdapter);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-	              android.R.layout.simple_list_item_1, android.R.id.text1, Classes);
+				android.R.layout.simple_list_item_1, android.R.id.text1,
+				Classes);
 		spinner.setAdapter(adapter);
 		GetServerData.setOnClickListener(new OnClickListener() {
 
@@ -150,8 +152,9 @@ spinner.setSelection(1);
 						email = jsonChildNode.optString("className").toString();
 						pwd = jsonChildNode.optString("classId").toString();
 						System.out.println(email + pwd + "\n\n\n");
-						//Classes.add(email);
-						Classes.add(jsonChildNode.optString("className").toString());
+						// Classes.add(email);
+						Classes.add(jsonChildNode.optString("className")
+								.toString());
 						list.add(email);
 					}
 				} catch (JSONException e) {
@@ -189,22 +192,22 @@ spinner.setSelection(1);
 		}
 
 	}
-//
-//	@Override
-//	public void onItemSelected(AdapterView<?> parent, View view, int pos,
-//			long id) {
-//		// TODO Auto-generated method stub
-//		Object obj=parent.getItemAtPosition(pos);
-//		Toast.makeText(parent.getContext(), "Selected: " + obj,
-//				Toast.LENGTH_LONG).show();
-//		item = parent.getItemAtPosition(pos).toString();
-//		Toast.makeText(parent.getContext(), "Selected: " + item,
-//				Toast.LENGTH_LONG).show();
-//	}
-//
-//	@Override
-//	public void onNothingSelected(AdapterView<?> arg0) {
-//		// TODO Auto-generated method stub
-//
-//	}
+	//
+	// @Override
+	// public void onItemSelected(AdapterView<?> parent, View view, int pos,
+	// long id) {
+	// // TODO Auto-generated method stub
+	// Object obj=parent.getItemAtPosition(pos);
+	// Toast.makeText(parent.getContext(), "Selected: " + obj,
+	// Toast.LENGTH_LONG).show();
+	// item = parent.getItemAtPosition(pos).toString();
+	// Toast.makeText(parent.getContext(), "Selected: " + item,
+	// Toast.LENGTH_LONG).show();
+	// }
+	//
+	// @Override
+	// public void onNothingSelected(AdapterView<?> arg0) {
+	// // TODO Auto-generated method stub
+	//
+	// }
 }

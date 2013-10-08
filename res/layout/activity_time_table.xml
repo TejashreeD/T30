@@ -224,11 +224,13 @@
                     android:text="Description"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <Spinner
-                    android:id="@+id/spinnerTestDesc"
+                 <EditText
+                    android:id="@+id/editTextDesc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text" />
             </TableRow>
             
             <TableRow

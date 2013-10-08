@@ -45,15 +45,16 @@
                     android:id="@+id/textViewStudentId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.2"
                     android:text="Student Id"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <Spinner
-                    android:id="@+id/spinnerStudentId"
-                    android:layout_width="wrap_content"
+                <EditText 
+                    android:id="@+id/studentid"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1.7"
+                    android:inputType="text"/>
             </TableRow>
 
             

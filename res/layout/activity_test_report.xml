@@ -47,13 +47,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:clickable="true"
                     android:text="Class"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Spinner
                     android:id="@+id/spinnerExamClass"
                     android:layout_width="wrap_content"
+                    android:paddingTop="10dp"
                     android:layout_height="wrap_content"
+                    android:background="#000000"
                     android:layout_weight="1" />
             </TableRow>
 
@@ -74,6 +77,7 @@
                 <Spinner
                     android:id="@+id/spinnerExamDivision"
                     android:layout_width="wrap_content"
+                    android:background="#000000"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
             </TableRow>

@@ -74,7 +74,7 @@ public class TimeTableActivity extends Activity{
 		MyTask3.execute();
 		txtEdate=(EditText) findViewById(R.id.editTextExamEndDate);
 		txtTime=(EditText) findViewById(R.id.editTextExamTime);
-		txtDesc=(EditText) findViewById(R.id.textViewETDesc);
+		txtDesc=(EditText) findViewById(R.id.editTextDesc);
 		ExamDate = (EditText) findViewById(R.id.editTextExamDate);
 		timeTableId=(EditText) findViewById(R.id.editTextExamtimeTableID);
 		

@@ -146,7 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Class Div"
+        android:text="Class "
         android:textAppearance="?android:attr/textAppearanceMedium" />
     <Spinner
         android:id="@+id/spinnerCalenderCDID"
@@ -154,8 +154,28 @@
 		android:layout_weight="1"
         android:layout_height="wrap_content"/>
         </TableRow>
-        <TableRow 
+            <TableRow 
         android:id="@+id/tableRowCalender7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2">
+         
+        <TextView
+        android:id="@+id/textViewCalenderCDIDDiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Division"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/spinnerCalenderCDIDDiv"
+        android:layout_width="wrap_content"
+		android:layout_weight="1"
+        android:layout_height="wrap_content"/>
+        </TableRow>
+    
+        <TableRow 
+        android:id="@+id/tableRowCalender8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="2">
@@ -168,7 +188,7 @@
         android:text="Holiday or not ?" />
 		</TableRow>
 		<TableRow 
-        android:id="@+id/tableRowCalender8"
+        android:id="@+id/tableRowCalender9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="4">
